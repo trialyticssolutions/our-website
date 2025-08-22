@@ -364,9 +364,9 @@ export default function ServicesPage() {
               Choose Your Data Solution
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-surfe-primary mb-8 leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
               Transform Your
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Business Data</span>
+              <span className="block text-surfe-primary">Business Data</span>
             </h1>
             
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
@@ -398,11 +398,11 @@ export default function ServicesPage() {
         <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
               Our
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Services</span>
+              <span className="block text-surfe-primary">Services</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
               Comprehensive solutions tailored to your business needs
             </p>
           </div>
@@ -556,11 +556,11 @@ export default function ServicesPage() {
               <Shield className="h-4 w-4 mr-2" />
               Our Process
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
               How We
-              <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Deliver Results</span>
+              <span className="block text-surfe-primary">Deliver Results</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
               We follow a proven, structured approach to ensure your project's success
             </p>
           </div>

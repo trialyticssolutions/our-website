@@ -1,114 +1,139 @@
+"use client"
+
+import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
-import { Star, Quote, Sparkles, Heart } from 'lucide-react'
-import { TESTIMONIALS } from '@/data/constants'
+import { Button } from '@/components/ui/button'
+import { ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react'
+
+const TESTIMONIALS = [
+  {
+    id: 1,
+    name: 'Sarah Johnson',
+    role: 'CTO, TechCorp',
+    content: 'The data infrastructure they built for us has transformed our entire operation. We\'ve seen a 300% improvement in processing speed and our team can now focus on insights rather than maintenance.',
+    avatar: 'SJ',
+    rating: 5
+  },
+  {
+    id: 2,
+    name: 'Michael Chen',
+    role: 'Data Director, DataFlow',
+    content: 'Outstanding expertise in database optimization. They helped us reduce costs by 40% while improving performance. The team is professional, responsive, and truly understands our business needs.',
+    avatar: 'MC',
+    rating: 5
+  },
+  {
+    id: 3,
+    name: 'Emily Rodriguez',
+    role: 'VP Engineering, InnovateLab',
+    content: 'From initial consultation to final implementation, the entire process was seamless. Their AI automation solutions have saved us countless hours and significantly improved our data accuracy.',
+    avatar: 'ER',
+    rating: 5
+  },
+  {
+    id: 4,
+    name: 'David Kim',
+    role: 'CEO, CloudSync',
+    content: 'The best investment we\'ve made this year. Their comprehensive approach to data management has given us a competitive edge. Highly recommend for any business serious about data-driven growth.',
+    avatar: 'DK',
+    rating: 5
+  }
+]
 
 export function TestimonialsSection() {
-  const featuredTestimonials = TESTIMONIALS.filter(testimonial => testimonial.featured)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }).map((_, index) => (
-      <Star
-        key={index}
-        className={`h-5 w-5 ${
-          index < rating ? 'text-yellow-400 fill-current' : 'text-neutral-300'
-        }`}
-      />
-    ))
+  const nextTestimonial = () => {
+    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
   }
 
   return (
-    <section className="section-padding bg-gradient-to-br from-white via-surfe-50 to-teal-50">
-      <div className="container mx-auto container-padding">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-surfe-100 text-surfe-700 rounded-full text-sm font-semibold mb-6">
-            <Heart className="h-4 w-4 mr-2" />
-            Client Success
+    <section className="py-20 bg-surfe-white relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-surfe-button-light text-surfe-primary rounded-full text-sm font-semibold mb-6">
+            <Sparkles className="h-4 w-4 mr-2" />
+            Client Testimonials
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
             What Our Clients
-            <span className="block text-gradient-surfe">Say</span>
+            <span className="block text-surfe-primary">Say</span>
           </h2>
-          <p className="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our clients have to say about 
-            the transformative impact of our data solutions.
+          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
+            Don't just take our word for it - hear from the businesses we've helped transform
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {featuredTestimonials.map((testimonial, index) => (
-                <CarouselItem 
-                  key={testimonial.id} 
-                  className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
-                >
-                  <Card className="card-surfe h-full group hover:shadow-surfe-lg hover:-translate-y-2 transition-all duration-500" style={{ animationDelay: `${index * 100}ms` }}>
-                    <CardContent className="p-8 flex flex-col h-full">
-                      {/* Quote icon */}
-                      <div className="flex justify-center mb-6">
-                        <div className="w-12 h-12 bg-surfe-gradient rounded-2xl flex items-center justify-center shadow-surfe-soft">
-                          <Quote className="h-6 w-6 text-white" />
-                        </div>
-                      </div>
-                      
-                      {/* Rating */}
-                      <div className="flex items-center justify-center mb-6">
-                        {renderStars(testimonial.rating)}
-                      </div>
+        <div className="max-w-4xl mx-auto relative">
+          <Card className="bg-surfe-white border-surfe-200 shadow-lg">
+            <CardContent className="p-12">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-surfe-primary rounded-2xl flex items-center justify-center mx-auto mb-8">
+                  <Quote className="h-8 w-8 text-surfe-white" />
+                </div>
+                
+                <blockquote className="text-xl text-surfe-text-secondary leading-relaxed mb-8 italic">
+                  "{TESTIMONIALS[currentIndex].content}"
+                </blockquote>
 
-                      {/* Testimonial content */}
-                      <blockquote className="text-neutral-700 mb-8 flex-1 text-lg leading-relaxed text-center">
-                        "{testimonial.content}"
-                      </blockquote>
+                <div className="flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 bg-surfe-primary rounded-full flex items-center justify-center mr-4">
+                    <span className="text-surfe-white font-semibold text-lg">
+                      {TESTIMONIALS[currentIndex].avatar}
+                    </span>
+                  </div>
+                  <div className="text-left">
+                    <div className="font-semibold text-surfe-primary text-lg">
+                      {TESTIMONIALS[currentIndex].name}
+                    </div>
+                    <div className="text-surfe-text-secondary">
+                      {TESTIMONIALS[currentIndex].role}
+                    </div>
+                  </div>
+                </div>
 
-                      {/* Author info */}
-                      <div className="flex items-center space-x-4 pt-6 border-t border-neutral-100">
-                        <div className="w-14 h-14 bg-surfe-gradient rounded-2xl flex items-center justify-center shadow-surfe-soft">
-                          <span className="text-white font-bold text-lg">
-                            {testimonial.name.charAt(0)}
-                          </span>
-                        </div>
-                        <div>
-                          <div className="font-semibold text-neutral-900 text-lg">
-                            {testimonial.name}
-                          </div>
-                          <div className="text-sm text-neutral-600">
-                            {testimonial.position} at {testimonial.company}
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+                <div className="flex justify-center space-x-1">
+                  {[...Array(TESTIMONIALS[currentIndex].rating)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-xl">★</span>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Navigation */}
+          <div className="flex justify-center mt-8 space-x-4">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={prevTestimonial}
+              className="border-surfe-200 text-surfe-primary hover:bg-surfe-button-light hover:text-surfe-primary"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <div className="flex space-x-2">
+              {TESTIMONIALS.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                    index === currentIndex ? 'bg-surfe-primary' : 'bg-surfe-200'
+                  }`}
+                />
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:flex bg-white border-surfe-200 text-surfe-600 hover:bg-surfe-50 hover:text-surfe-700" />
-            <CarouselNext className="hidden md:flex bg-white border-surfe-200 text-surfe-600 hover:bg-surfe-50 hover:text-surfe-700" />
-          </Carousel>
-        </div>
-
-        {/* Overall stats */}
-        <div className="mt-20 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="space-y-4 group">
-              <div className="text-5xl font-bold text-gradient-surfe group-hover:scale-110 transition-transform duration-300">4.9/5</div>
-              <div className="text-neutral-600 font-medium">Average Client Rating</div>
             </div>
-            <div className="space-y-4 group">
-              <div className="text-5xl font-bold text-gradient-surfe group-hover:scale-110 transition-transform duration-300">100%</div>
-              <div className="text-neutral-600 font-medium">Client Retention Rate</div>
-            </div>
-            <div className="space-y-4 group">
-              <div className="text-5xl font-bold text-gradient-surfe group-hover:scale-110 transition-transform duration-300">50+</div>
-              <div className="text-neutral-600 font-medium">Success Stories</div>
-            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={nextTestimonial}
+              className="border-surfe-200 text-surfe-primary hover:bg-surfe-button-light hover:text-surfe-primary"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>

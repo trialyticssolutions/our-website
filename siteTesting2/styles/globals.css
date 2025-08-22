@@ -6,27 +6,46 @@
 
 @layer base {
   :root {
-    /* Surfe-inspired color scheme */
+    /* SURFE Exact Color Scheme from Image */
+    --surfe-primary: #073742; /* Dark teal/blue-green - logo, nav, buttons */
+    --surfe-background: #F0F8FA; /* Very light pale blue/off-white background */
+    --surfe-text-primary: #073742; /* Primary text color */
+    --surfe-text-secondary: #6B7280; /* Medium-dark gray for sub-headings */
+    --surfe-text-light: #9CA3AF; /* Light gray for footer text */
+    --surfe-button-light: #E0F2F7; /* Light blue for secondary buttons */
+    --surfe-white: #FFFFFF; /* Pure white */
+    --surfe-gray-50: #F9FAFB;
+    --surfe-gray-100: #F3F4F6;
+    --surfe-gray-200: #E5E7EB;
+    --surfe-gray-300: #D1D5DB;
+    --surfe-gray-400: #9CA3AF;
+    --surfe-gray-500: #6B7280;
+    --surfe-gray-600: #4B5563;
+    --surfe-gray-700: #374151;
+    --surfe-gray-800: #1F2937;
+    --surfe-gray-900: #111827;
+
+    /* CSS Variables for Tailwind */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 199 89% 48%; /* Surfe blue */
+    --primary: 199 89% 48%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 199 89% 48%; /* Surfe blue accent */
+    --accent: 199 89% 48%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 199 89% 48%; /* Surfe blue ring */
-    --radius: 0.75rem; /* Slightly more rounded like Surfe */
+    --ring: 199 89% 48%;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -36,19 +55,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 199 89% 48%; /* Surfe blue */
+    --primary: 199 89% 48%;
     --primary-foreground: 210 40% 98%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 199 89% 48%; /* Surfe blue accent */
+    --accent: 199 89% 48%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 199 89% 48%; /* Surfe blue ring */
+    --ring: 199 89% 48%;
   }
 }
 
@@ -58,7 +77,10 @@
   }
   
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 18px;
+    line-height: 1.25;
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -68,54 +90,97 @@
     scroll-behavior: smooth;
   }
 
-  /* Surfe-style scrollbar */
+  /* SURFE Typography */
+  h1 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  h5 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  h6 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* SURFE Color Classes */
+  .surfe-primary { color: var(--surfe-primary); }
+  .surfe-background { background-color: var(--surfe-background); }
+  .surfe-text-primary { color: var(--surfe-text-primary); }
+  .surfe-text-secondary { color: var(--surfe-text-secondary); }
+  .surfe-text-light { color: var(--surfe-text-light); }
+  .surfe-button-light { background-color: var(--surfe-button-light); }
+  .surfe-white { color: var(--surfe-white); }
+  .surfe-gray-50 { color: var(--surfe-gray-50); }
+  .surfe-gray-100 { color: var(--surfe-gray-100); }
+  .surfe-gray-200 { color: var(--surfe-gray-200); }
+  .surfe-gray-300 { color: var(--surfe-gray-300); }
+  .surfe-gray-400 { color: var(--surfe-gray-400); }
+  .surfe-gray-500 { color: var(--surfe-gray-500); }
+  .surfe-gray-600 { color: var(--surfe-gray-600); }
+  .surfe-gray-700 { color: var(--surfe-gray-700); }
+  .surfe-gray-800 { color: var(--surfe-gray-800); }
+  .surfe-gray-900 { color: var(--surfe-gray-900); }
+
+  /* SURFE Background Color Classes */
+  .bg-surfe-primary { background-color: var(--surfe-primary); }
+  .bg-surfe-background { background-color: var(--surfe-background); }
+  .bg-surfe-text-primary { background-color: var(--surfe-text-primary); }
+  .bg-surfe-text-secondary { background-color: var(--surfe-text-secondary); }
+  .bg-surfe-text-light { background-color: var(--surfe-text-light); }
+  .bg-surfe-button-light { background-color: var(--surfe-button-light); }
+  .bg-surfe-white { background-color: var(--surfe-white); }
+  .bg-surfe-gray-50 { background-color: var(--surfe-gray-50); }
+  .bg-surfe-gray-100 { background-color: var(--surfe-gray-100); }
+  .bg-surfe-gray-200 { background-color: var(--surfe-gray-200); }
+  .bg-surfe-gray-300 { background-color: var(--surfe-gray-300); }
+  .bg-surfe-gray-400 { background-color: var(--surfe-gray-400); }
+  .bg-surfe-gray-500 { background-color: var(--surfe-gray-500); }
+  .bg-surfe-gray-600 { background-color: var(--surfe-gray-600); }
+  .bg-surfe-gray-700 { background-color: var(--surfe-gray-700); }
+  .bg-surfe-gray-800 { background-color: var(--surfe-gray-800); }
+  .bg-surfe-gray-900 { background-color: var(--surfe-gray-900); }
+
+  /* SURFE-style scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-100;
+    background-color: var(--surfe-gray-100);
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-surfe-300 rounded-full;
+    background-color: var(--surfe-primary);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-surfe-400;
-  }
-
-  /* Typography improvements */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
-  }
-
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
-  }
-
-  h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
-  }
-
-  h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
-  }
-
-  h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
-  }
-
-  h5 {
-    @apply text-lg md:text-xl lg:text-2xl;
-  }
-
-  h6 {
-    @apply text-base md:text-lg lg:text-xl;
-  }
-
-  p {
-    @apply leading-relaxed;
+    background-color: var(--surfe-gray-600);
   }
 }
 

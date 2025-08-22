@@ -13,11 +13,11 @@ export function FloatingWidgets() {
   return (
     <>
       {/* Floating Widgets */}
-      <div className="floating-widget">
+      <div className="fixed bottom-6 right-6 z-50">
         {/* WhatsApp Widget */}
         <Button
           onClick={handleWhatsAppClick}
-          className="floating-widget-button bg-green-500 hover:bg-green-600"
+          className="w-14 h-14 bg-surfe-primary hover:bg-surfe-700 text-surfe-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           aria-label="Contact us on WhatsApp"
           title="Contact us on WhatsApp"
         >

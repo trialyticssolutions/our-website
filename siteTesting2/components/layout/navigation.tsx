@@ -38,7 +38,7 @@ export function Navigation() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'glass shadow-surfe-soft border-b border-neutral-100'
+          ? 'bg-surfe-white shadow-lg border-b border-surfe-200'
           : 'bg-transparent'
       )}
     >
@@ -50,10 +50,10 @@ export function Navigation() {
             className="flex items-center space-x-3 group"
             onClick={closeSheet}
           >
-            <div className="flex items-center justify-center w-12 h-12 bg-surfe-gradient text-white rounded-2xl shadow-surfe-soft group-hover:shadow-surfe-medium transition-all duration-300 group-hover:scale-105">
+            <div className="flex items-center justify-center w-12 h-12 bg-surfe-primary text-surfe-white rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
               <Sparkles className="h-6 w-6" />
             </div>
-            <span className="text-2xl font-bold text-gradient-surfe">
+            <span className="text-2xl font-bold text-surfe-primary">
               DataFlow
             </span>
           </Link>
@@ -65,19 +65,19 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'text-base font-medium transition-all duration-200 hover:text-surfe-600 relative',
+                  'text-base font-medium transition-all duration-200 hover:text-surfe-primary relative',
                   isActiveLink(item.href)
-                    ? 'text-surfe-600 font-semibold'
-                    : 'text-neutral-600'
+                    ? 'text-surfe-primary font-semibold'
+                    : 'text-surfe-text-secondary'
                 )}
               >
                 {item.label}
                 {isActiveLink(item.href) && (
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-surfe-gradient rounded-full"></div>
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-surfe-primary rounded-full"></div>
                 )}
               </Link>
             ))}
-            <Button className="btn-primary ml-6">
+            <Button className="bg-surfe-primary hover:bg-surfe-700 text-surfe-white ml-6">
               Get Started
             </Button>
           </div>
@@ -88,13 +88,13 @@ export function Navigation() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden hover:bg-surfe-50"
+                className="md:hidden hover:bg-surfe-button-light"
                 aria-label="Open navigation menu"
               >
-                <Menu className="h-6 w-6 text-neutral-600" />
+                <Menu className="h-6 w-6 text-surfe-text-secondary" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white/95 backdrop-blur-sm border-l border-neutral-200">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-surfe-white border-l border-surfe-200">
               <div className="flex flex-col space-y-8 mt-8">
                 {/* Mobile Logo */}
                 <Link
@@ -102,10 +102,10 @@ export function Navigation() {
                   className="flex items-center space-x-3"
                   onClick={closeSheet}
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-surfe-gradient text-white rounded-2xl shadow-surfe-soft">
+                  <div className="flex items-center justify-center w-12 h-12 bg-surfe-primary text-surfe-white rounded-2xl shadow-md">
                     <Sparkles className="h-6 w-6" />
                   </div>
-                  <span className="text-2xl font-bold text-gradient-surfe">
+                  <span className="text-2xl font-bold text-surfe-primary">
                     DataFlow
                   </span>
                 </Link>
@@ -119,15 +119,15 @@ export function Navigation() {
                       className={cn(
                         'text-lg font-medium transition-all duration-200 py-3 px-4 rounded-xl',
                         isActiveLink(item.href)
-                          ? 'text-surfe-600 bg-surfe-50 font-semibold'
-                          : 'text-neutral-600 hover:text-surfe-600 hover:bg-neutral-50'
+                          ? 'text-surfe-primary bg-surfe-button-light font-semibold'
+                          : 'text-surfe-text-secondary hover:text-surfe-primary hover:bg-surfe-button-light'
                       )}
                       onClick={closeSheet}
                     >
                       {item.label}
                     </Link>
                   ))}
-                  <Button className="btn-primary w-full mt-6" onClick={closeSheet}>
+                  <Button className="bg-surfe-primary hover:bg-surfe-700 text-surfe-white w-full mt-6" onClick={closeSheet}>
                     Get Started
                   </Button>
                 </div>

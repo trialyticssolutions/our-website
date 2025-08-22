@@ -50,59 +50,25 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Surfe-inspired color palette
+        // SURFE Exact Color Palette from Image
         surfe: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
-        },
-        // Surfe's signature teal accent
-        teal: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-          950: '#042f2e',
-        },
-        // Surfe's neutral palette
-        neutral: {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-          950: '#0a0a0a',
-        },
-        brand: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          primary: '#073742', /* Dark teal/blue-green - logo, nav, buttons */
+          background: '#F0F8FA', /* Very light pale blue/off-white background */
+          'text-primary': '#073742', /* Primary text color */
+          'text-secondary': '#6B7280', /* Medium-dark gray for sub-headings */
+          'text-light': '#9CA3AF', /* Light gray for footer text */
+          'button-light': '#E0F2F7', /* Light blue for secondary buttons */
+          white: '#FFFFFF', /* Pure white */
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
         },
       },
       borderRadius: {
@@ -184,14 +150,14 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'surfe-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #14b8a6 50%, #0ea5e9 100%)',
-        'surfe-gradient-horizontal': 'linear-gradient(90deg, #0ea5e9 0%, #14b8a6 50%, #0ea5e9 100%)',
-        'surfe-gradient-vertical': 'linear-gradient(180deg, #0ea5e9 0%, #14b8a6 50%, #0ea5e9 100%)',
+        'surfe-gradient': 'linear-gradient(135deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
+        'surfe-gradient-horizontal': 'linear-gradient(90deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
+        'surfe-gradient-vertical': 'linear-gradient(180deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
       },
       boxShadow: {
-        'surfe': '0 10px 25px -3px rgba(14, 165, 233, 0.1), 0 4px 6px -2px rgba(14, 165, 233, 0.05)',
-        'surfe-lg': '0 20px 25px -5px rgba(14, 165, 233, 0.1), 0 10px 10px -5px rgba(14, 165, 233, 0.04)',
-        'surfe-xl': '0 25px 50px -12px rgba(14, 165, 233, 0.25)',
+        'surfe': '0 10px 25px -3px rgba(7, 55, 66, 0.1), 0 4px 6px -2px rgba(7, 55, 66, 0.05)',
+        'surfe-lg': '0 20px 25px -5px rgba(7, 55, 66, 0.1), 0 10px 10px -5px rgba(7, 55, 66, 0.04)',
+        'surfe-xl': '0 25px 50px -12px rgba(7, 55, 66, 0.25)',
       },
     },
   },

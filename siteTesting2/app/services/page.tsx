@@ -4,6 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { 
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { 
   Database, 
   TrendingUp, 
   Bot, 
@@ -351,23 +359,23 @@ export default function ServicesPage() {
         
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-8 opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
               <Sparkles className="h-4 w-4 mr-2" />
               Choose Your Data Solution
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
               Transform Your
               <span className="block bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Business Data</span>
             </h1>
             
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
               From foundational database setup to advanced AI automation, we provide comprehensive 
               data solutions that drive growth and efficiency for businesses of all sizes.
             </p>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-8 mt-12 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+            <div className="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
               <div className="flex items-center space-x-2 text-gray-600">
                 <CheckCircle className="h-5 w-5 text-green-500" />
                 <span className="text-sm font-medium">ISO 27001 Certified</span>
@@ -385,7 +393,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid - Restored and Enhanced */}
+      {/* Services Grid - All 8 Services with Compact Cards */}
       <section className="py-20 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -399,97 +407,139 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* All 8 Services in Compact Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {SERVICES.map((service, index) => {
               const IconComponent = iconMap[service.icon as keyof typeof iconMap] || Database
+              const colors = [
+                'from-blue-500 to-cyan-500',
+                'from-purple-500 to-pink-500',
+                'from-orange-500 to-red-500',
+                'from-green-500 to-emerald-500',
+                'from-indigo-500 to-blue-500',
+                'from-pink-500 to-rose-500',
+                'from-yellow-500 to-orange-500',
+                'from-teal-500 to-cyan-500'
+              ]
 
               return (
-                <Card key={service.id} className="relative group bg-white rounded-2xl border border-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col" style={{ animationDelay: `${index * 100}ms` }}>
-                  <CardHeader className="text-center pb-4 pt-8">
-                    <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <IconComponent className="h-8 w-8 text-white" />
+                <Card key={service.id} className="relative group bg-white rounded-2xl border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" style={{ animationDelay: `${index * 100}ms` }}>
+                  <CardHeader className="text-center pb-4 pt-6">
+                    <div className="flex justify-center mb-4">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${colors[index % colors.length]} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md`}>
+                        <IconComponent className="h-6 w-6 text-white" />
                       </div>
                     </div>
-                    <CardTitle className="text-2xl mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                    <CardTitle className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                       {service.title}
                     </CardTitle>
-                    <CardDescription className="text-gray-600 leading-relaxed">
+                    <CardDescription className="text-sm text-gray-600 leading-relaxed">
                       {service.description}
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="flex-1 flex flex-col">
-                    {/* Features */}
-                    <div className="space-y-3 mb-6">
-                      <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                        <Check className="h-5 w-5 text-green-500 mr-2" />
-                        What's Included
-                      </h4>
-                      <div className="space-y-2">
-                        {service.features.slice(0, 5).map((feature: string, idx: number) => (
-                          <div key={idx} className="flex items-start space-x-3">
-                            <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                            <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
-                          </div>
-                        ))}
-                        {service.features.length > 5 && (
-                          <div className="text-sm text-blue-600 font-medium">
-                            +{service.features.length - 5} more features
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Technologies / Benefits */}
-                    <div className="grid grid-cols-1 gap-4 mb-6">
-                      {service.technologies?.length ? (
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                            <Zap className="h-5 w-5 text-blue-500 mr-2" />
-                            Technologies
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {service.technologies.slice(0, 4).map((tech: string, idx: number) => (
-                              <Badge key={idx} className="bg-blue-100 text-blue-700 text-xs px-3 py-1">
-                                {tech}
-                              </Badge>
-                            ))}
-                            {service.technologies.length > 4 && (
-                              <Badge className="bg-gray-100 text-gray-600 text-xs">
-                                +{service.technologies.length - 4} more
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {service.benefits?.length ? (
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                            <Star className="h-5 w-5 text-yellow-500 mr-2" />
-                            Key Benefits
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {service.benefits.slice(0, 3).map((benefit: string, idx: number) => (
-                              <Badge key={idx} variant="outline" className="text-xs border-green-200 text-green-700 px-3 py-1">
-                                {benefit}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      ) : null}
-                    </div>
-
-                    {/* CTA aligned at bottom */}
-                    <div className="mt-auto pt-4 border-t border-gray-100">
-                      <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300" asChild>
-                        <Link href="/contact">
-                          Get Started
+                  <CardContent className="flex-1 flex flex-col justify-end">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          variant="outline"
+                          className="w-full border-black text-black hover:bg-gray-50 hover:text-black rounded-lg transition-all duration-300"
+                        >
+                          Learn More
                           <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                    </div>
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <div className="flex items-center space-x-3 mb-4">
+                            <div className={`w-12 h-12 bg-gradient-to-r ${colors[index % colors.length]} rounded-xl flex items-center justify-center`}>
+                              <IconComponent className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                              <DialogTitle className="text-2xl text-left">{service.title}</DialogTitle>
+                              <DialogDescription className="text-lg text-left">
+                                {service.description}
+                              </DialogDescription>
+                            </div>
+                          </div>
+                        </DialogHeader>
+                        
+                        <div className="space-y-6 mt-6">
+                          {/* Full Description */}
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2 text-lg">Overview</h4>
+                            <p className="text-gray-700 leading-relaxed">{service.fullDescription}</p>
+                          </div>
+
+                          {/* Features */}
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                              <Check className="h-5 w-5 text-green-500 mr-2" />
+                              What's Included
+                            </h4>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {service.features.map((feature: string, idx: number) => (
+                                <div key={idx} className="flex items-start space-x-3">
+                                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                                  <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Target Audience */}
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-2 text-lg flex items-center">
+                              <Target className="h-5 w-5 text-blue-500 mr-2" />
+                              Target Audience
+                            </h4>
+                            <p className="text-gray-700 leading-relaxed">{service.targetAudience}</p>
+                          </div>
+
+                          {/* Key Benefits */}
+                          <div>
+                            <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                              <Star className="h-5 w-5 text-yellow-500 mr-2" />
+                              Key Benefits
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {service.benefits.map((benefit: string, idx: number) => (
+                                <Badge key={idx} variant="outline" className="text-sm border-green-200 text-green-700 px-3 py-1">
+                                  {benefit}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Technologies */}
+                          {service.technologies && service.technologies.length > 0 && (
+                            <div>
+                              <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                                <Zap className="h-5 w-5 text-blue-500 mr-2" />
+                                Technologies & Tools
+                              </h4>
+                              <div className="flex flex-wrap gap-2">
+                                {service.technologies.map((tech: string, idx: number) => (
+                                  <Badge key={idx} className="bg-blue-100 text-blue-700 text-sm px-3 py-1">
+                                    {tech}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          {/* CTA */}
+                          <div className="pt-4 border-t border-gray-200">
+                            <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+                              <Link href="/contact">
+                                Get Started with {service.title}
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                              </Link>
+                            </Button>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   </CardContent>
                 </Card>
               )

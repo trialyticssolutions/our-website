@@ -30,7 +30,7 @@ export function Navigation() {
     if (href === '/') {
       return pathname === '/'
     }
-    return pathname.startsWith(href)
+    return pathname === href || pathname.startsWith(href + '/')
   }
 
   return (
@@ -43,20 +43,20 @@ export function Navigation() {
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center h-9 mt-6">
+        <div className="flex items-center justify-center h-12 mt-6">
           {/* Pill-shaped Navigation Container */}
-          <div className="bg-gradient-to-r from-[#3a3a3a] via-[#2a2a2a] via-[#1f1f1f] to-[#1a1a1a] border border-[#444] rounded-[50px] px-7 py-1.5 shadow-xl flex items-center justify-between w-full">
+          <div className="bg-gradient-to-t from-[#3a3a3a] via-[#1a1a1a] to-[#3a3a3a] border border-[#444] rounded-[50px] px-8 py-2 flex items-center justify-between w-full">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center space-x-2.5 group"
+              className="flex items-center space-x-3 group"
               onClick={closeSheet}
             >
-              <div className="flex items-center justify-center w-5 h-5 bg-white text-[#1a1a1a] rounded-md shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-                <Sparkles className="h-2.5 w-2.5" />
+              <div className="flex items-center justify-center w-6 h-6 bg-white text-[#1a1a1a] rounded-md transition-all duration-300 group-hover:scale-105">
+                <Sparkles className="h-3 w-3" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xs font-bold text-white font-inter">
+                <span className="text-sm font-bold text-white font-inter">
                   DataFlow
                 </span>
                 <span className="text-[8px] text-white/70 uppercase tracking-wider font-inter">
@@ -66,25 +66,38 @@ export function Navigation() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-7">
-              {NAVIGATION_ITEMS.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    'text-[10px] font-medium transition-all duration-200 relative font-inter px-3 py-1 rounded-[50px]',
-                    isActiveLink(item.href)
-                      ? 'text-[#8b5cf6] font-semibold'
-                      : 'text-white/90 hover:text-white hover:bg-[#2E2E2E]'
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <div className="hidden md:flex items-center space-x-8">
+              {NAVIGATION_ITEMS.map((item) => {
+                const isActive = isActiveLink(item.href)
+                console.log(`Navigation item: ${item.label}, href: ${item.href}, pathname: ${pathname}, isActive: ${isActive}`)
+                
+                if (isActive) {
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="nav-link-active text-[#8b5cf6] text-sm font-medium transition-all duration-200 relative font-inter px-4 py-2 rounded-[50px] hover:bg-[#2E2E2E]"
+                      style={{ color: '#8b5cf6' }}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                }
+                
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm font-medium transition-all duration-200 relative font-inter px-4 py-2 rounded-[50px] hover:bg-[#2E2E2E] text-white/90 hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              })}
             </div>
 
             {/* CTA Button */}
-            <Button className="bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-medium px-3 py-0.5 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 font-inter text-[10px] min-h-0 h-6">
+            <Button className="bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-medium px-4 py-1 rounded-full transition-all duration-300 hover:scale-105 font-inter text-sm min-h-0 h-8">
               Get Started
             </Button>
 

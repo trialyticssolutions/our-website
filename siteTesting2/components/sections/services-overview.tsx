@@ -32,7 +32,7 @@ export function ServicesOverview() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
             Comprehensive
-            <span className="block text-surfe-primary">Solutions</span>
+            <span className="block text-orange-custom">Solutions</span>
           </h2>
           <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
             From data infrastructure to AI automation, we provide end-to-end solutions that drive your business forward

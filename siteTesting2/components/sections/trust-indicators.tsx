@@ -27,7 +27,7 @@ export function TrustIndicators() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
             Trusted by
-            <span className="block text-surfe-primary">Leading Companies</span>
+            <span className="block text-orange-custom">Leading Companies</span>
           </h2>
           <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
             Our track record speaks for itself - we've helped hundreds of businesses transform their data operations

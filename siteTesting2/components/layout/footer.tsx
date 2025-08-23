@@ -70,7 +70,7 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-surfe-white">Navigation</h3>
+            <h3 className="text-lg font-semibold text-orange-custom">Navigation</h3>
             <ul className="space-y-3">
               {NAVIGATION_ITEMS.map((item) => (
                 <li key={item.href}>
@@ -87,7 +87,7 @@ export function Footer() {
 
           {/* Services */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-surfe-white">Services</h3>
+            <h3 className="text-lg font-semibold text-orange-custom">Services</h3>
             <ul className="space-y-3 text-base">
               <li>
                 <Link
@@ -134,7 +134,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-surfe-white">Contact</h3>
+            <h3 className="text-lg font-semibold text-orange-custom">Contact</h3>
             <div className="space-y-4 text-base">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-surfe-white/20 rounded-lg flex items-center justify-center">

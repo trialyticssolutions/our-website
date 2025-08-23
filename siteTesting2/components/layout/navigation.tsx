@@ -38,102 +38,114 @@ export function Navigation() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-surfe-white shadow-lg border-b border-surfe-200'
+          ? 'bg-transparent'
           : 'bg-transparent'
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center space-x-3 group"
-            onClick={closeSheet}
-          >
-            <div className="flex items-center justify-center w-12 h-12 bg-surfe-primary text-surfe-white rounded-2xl shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-              <Sparkles className="h-6 w-6" />
-            </div>
-            <span className="text-2xl font-bold text-surfe-primary">
-              DataFlow
-            </span>
-          </Link>
+        <div className="flex items-center justify-center h-9 mt-6">
+          {/* Pill-shaped Navigation Container */}
+          <div className="bg-gradient-to-r from-[#3a3a3a] via-[#2a2a2a] via-[#1f1f1f] to-[#1a1a1a] border border-[#444] rounded-[50px] px-7 py-1.5 shadow-xl flex items-center justify-between w-full">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="flex items-center space-x-2.5 group"
+              onClick={closeSheet}
+            >
+              <div className="flex items-center justify-center w-5 h-5 bg-white text-[#1a1a1a] rounded-md shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+                <Sparkles className="h-2.5 w-2.5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-xs font-bold text-white font-inter">
+                  DataFlow
+                </span>
+                <span className="text-[8px] text-white/70 uppercase tracking-wider font-inter">
+                  Data Solutions
+                </span>
+              </div>
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {NAVIGATION_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'text-base font-medium transition-all duration-200 hover:text-surfe-primary relative',
-                  isActiveLink(item.href)
-                    ? 'text-surfe-primary font-semibold'
-                    : 'text-surfe-text-secondary'
-                )}
-              >
-                {item.label}
-                {isActiveLink(item.href) && (
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-surfe-primary rounded-full"></div>
-                )}
-              </Link>
-            ))}
-            <Button className="bg-surfe-primary hover:bg-surfe-700 text-surfe-white ml-6">
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-7">
+              {NAVIGATION_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    'text-[10px] font-medium transition-all duration-200 relative font-inter px-3 py-1 rounded-[50px]',
+                    isActiveLink(item.href)
+                      ? 'text-[#8b5cf6] font-semibold'
+                      : 'text-white/90 hover:text-white hover:bg-[#2E2E2E]'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <Button className="bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white font-medium px-3 py-0.5 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 font-inter text-[10px] min-h-0 h-6">
               Get Started
             </Button>
-          </div>
 
-          {/* Mobile Navigation */}
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="md:hidden hover:bg-surfe-button-light"
-                aria-label="Open navigation menu"
-              >
-                <Menu className="h-6 w-6 text-surfe-text-secondary" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-surfe-white border-l border-surfe-200">
-              <div className="flex flex-col space-y-8 mt-8">
-                {/* Mobile Logo */}
-                <Link
-                  href="/"
-                  className="flex items-center space-x-3"
-                  onClick={closeSheet}
+            {/* Mobile Menu Button */}
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden hover:bg-white/10 text-white"
+                  aria-label="Open navigation menu"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 bg-surfe-primary text-surfe-white rounded-2xl shadow-md">
-                    <Sparkles className="h-6 w-6" />
-                  </div>
-                  <span className="text-2xl font-bold text-surfe-primary">
-                    DataFlow
-                  </span>
-                </Link>
+                  <Menu className="h-3.5 w-3.5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-[#1a1a1a] border-l border-[#333]">
+                <div className="flex flex-col space-y-8 mt-8">
+                  {/* Mobile Logo */}
+                  <Link
+                    href="/"
+                    className="flex items-center space-x-3"
+                    onClick={closeSheet}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-white text-[#1a1a1a] rounded-2xl shadow-md">
+                      <Sparkles className="h-6 w-6" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-2xl font-bold text-white font-inter">
+                        DataFlow
+                      </span>
+                      <span className="text-sm text-white/70 uppercase tracking-wider font-inter">
+                        Data Solutions
+                      </span>
+                    </div>
+                  </Link>
 
-                {/* Mobile Navigation Links */}
-                <div className="flex flex-col space-y-6">
-                  {NAVIGATION_ITEMS.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={cn(
-                        'text-lg font-medium transition-all duration-200 py-3 px-4 rounded-xl',
-                        isActiveLink(item.href)
-                          ? 'text-surfe-primary bg-surfe-button-light font-semibold'
-                          : 'text-surfe-text-secondary hover:text-surfe-primary hover:bg-surfe-button-light'
-                      )}
-                      onClick={closeSheet}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                  <Button className="bg-surfe-primary hover:bg-surfe-700 text-surfe-white w-full mt-6" onClick={closeSheet}>
-                    Get Started
-                  </Button>
+                  {/* Mobile Navigation Links */}
+                  <div className="flex flex-col space-y-6">
+                    {NAVIGATION_ITEMS.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={cn(
+                          'text-lg font-medium transition-all duration-200 py-3 px-4 rounded-xl font-inter',
+                          isActiveLink(item.href)
+                            ? 'text-white bg-white/10 font-semibold'
+                            : 'text-white/90 hover:text-white hover:bg-white/10'
+                        )}
+                        onClick={closeSheet}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                    <Button className="bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] hover:from-[#7c3aed] hover:to-[#9333ea] text-white w-full mt-6 rounded-full font-inter" onClick={closeSheet}>
+                      Get Started
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </SheetContent>
-          </Sheet>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </nav>
     </header>

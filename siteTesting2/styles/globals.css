@@ -1188,3 +1188,31 @@ button:hover, .btn:hover, .button:hover, [class*="btn-"]:hover, [class*="button"
     display: none;
   }
 } 
+
+/* Custom Orange Color Override */
+.text-orange-custom {
+  color: #fb923c !important;
+}
+
+.text-orange-custom span {
+  color: #fb923c !important;
+}
+
+/* Ensure the orange color works even when parent has different text colors */
+h1 .text-orange-custom,
+h2 .text-orange-custom,
+h3 .text-orange-custom {
+  color: #fb923c !important;
+}
+
+/* Override any existing text color classes */
+.text-surfe-primary.text-orange-custom,
+.text-surfe-white.text-orange-custom,
+.text-gray-900.text-orange-custom {
+  color: #fb923c !important;
+}
+
+/* Inter Font Family */
+.font-inter {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+} 

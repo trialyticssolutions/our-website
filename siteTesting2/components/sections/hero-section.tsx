@@ -38,7 +38,7 @@ export function HeroSection() {
           {/* Main headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-surfe-primary mb-8 leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Unlock Your Data's
-            <span className="block text-surfe-primary">
+            <span className="block text-orange-custom">
               Full Potential
             </span>
           </h1>
@@ -75,15 +75,15 @@ export function HeroSection() {
 
           {/* Trust indicators */}
           <div className="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
-            <div className="flex items-center space-x-2 text-gray-600">
+            <div className="flex items-center space-x-2 text-orange-custom">
               <CheckCircle className="h-5 w-5 text-green-500" />
               <span className="text-sm font-medium">ISO 27001 Certified</span>
             </div>
-            <div className="flex items-center space-x-2 text-gray-600">
+            <div className="flex items-center space-x-2 text-orange-custom">
               <Shield className="h-5 w-5 text-blue-500" />
               <span className="text-sm font-medium">GDPR Compliant</span>
             </div>
-            <div className="flex items-center space-x-2 text-gray-600">
+            <div className="flex items-center space-x-2 text-orange-custom">
               <Users className="h-5 w-5 text-purple-500" />
               <span className="text-sm font-medium">500+ Projects Delivered</span>
             </div>

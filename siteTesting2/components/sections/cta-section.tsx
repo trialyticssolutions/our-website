@@ -23,7 +23,7 @@ export function CtaSection() {
           
           <h2 className="text-4xl md:text-5xl font-bold text-surfe-white mb-6">
             Start Your Data
-            <span className="block text-surfe-white">Transformation Today</span>
+            <span className="block text-orange-custom">Transformation Today</span>
           </h2>
           
           <p className="text-xl text-surfe-white/90 mb-10 max-w-3xl mx-auto leading-relaxed">

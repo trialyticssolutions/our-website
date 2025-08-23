@@ -632,3 +632,559 @@
     @apply border-orange-200;
   }
 } 
+
+/* ==========================================
+   NUGGET.COM DARK THEME OVERRIDES
+   COSMETIC CHANGES ONLY - NO STRUCTURE CHANGES
+   ========================================== */
+
+/* Global Dark Theme Overrides */
+body {
+  background: #0c0a0f !important;
+  color: #d1d5db !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Headings - Make all headings white */
+h1, h2, h3, h4, h5, h6, .heading, .title, [class*="heading"], [class*="title"] {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+/* Paragraphs and text - Light gray */
+p, span, div, .text, [class*="text"] {
+  color: #d1d5db !important;
+}
+
+/* Links - Orange accent */
+a {
+  color: #fb923c !important;
+  transition: color 0.3s ease !important;
+}
+
+a:hover {
+  color: #fbbf24 !important;
+}
+
+/* Sections - Transparent backgrounds */
+section, .section, [class*="section"] {
+  background: transparent !important;
+}
+
+/* ==========================================
+   NAVIGATION STYLING
+   ========================================== */
+
+/* Navigation bar - Dark with backdrop blur */
+nav, .navbar, .nav, .navigation, header, [class*="nav"], [class*="navbar"] {
+  background: rgba(12, 10, 15, 0.9) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid #3f3451 !important;
+}
+
+/* Navigation links */
+nav a, .nav-link, .navbar-link, [class*="nav-link"], [class*="navbar-link"] {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+}
+
+nav a:hover, .nav-link:hover, .navbar-link:hover, [class*="nav-link"]:hover, [class*="navbar-link"]:hover {
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   BUTTON STYLING
+   ========================================== */
+
+/* All buttons - Purple gradient */
+button, .btn, .button, .cta-button, [class*="btn-"], [class*="button"] {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+button:hover, .btn:hover, .button:hover, .cta-button:hover, [class*="btn-"]:hover, [class*="button"]:hover {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Secondary buttons */
+.btn-secondary, .button-secondary, .btn-outline, [class*="btn-secondary"], [class*="button-secondary"], [class*="btn-outline"] {
+  background: transparent !important;
+  border: 2px solid #7c3aed !important;
+  color: #7c3aed !important;
+}
+
+.btn-secondary:hover, .button-secondary:hover, .btn-outline:hover, [class*="btn-secondary"]:hover, [class*="button-secondary"]:hover, [class*="btn-outline"]:hover {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   CARD STYLING
+   ========================================== */
+
+/* All cards - Glassmorphism effect */
+.card, .service-card, .feature-card, .pricing-card, [class*="card-"], [class*="service-"], [class*="feature-"], [class*="pricing-"] {
+  background: rgba(26, 22, 37, 0.6) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid #3f3451 !important;
+  border-radius: 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.card:hover, .service-card:hover, .feature-card:hover, .pricing-card:hover, [class*="card-"]:hover, [class*="service-"]:hover, [class*="feature-"]:hover, [class*="pricing-"]:hover {
+  border-color: #7c3aed !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2) !important;
+}
+
+/* Card text */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6, [class*="card-"] h1, [class*="card-"] h2, [class*="card-"] h3, [class*="card-"] h4, [class*="card-"] h5, [class*="card-"] h6 {
+  color: #ffffff !important;
+}
+
+.card p, .card span, .card div, [class*="card-"] p, [class*="card-"] span, [class*="card-"] div {
+  color: #d1d5db !important;
+}
+
+/* ==========================================
+   FORM STYLING
+   ========================================== */
+
+/* Form elements */
+input, textarea, select, .form-control, .input, [class*="form-"], [class*="input-"] {
+  background: rgba(26, 22, 37, 0.6) !important;
+  border: 1px solid #524669 !important;
+  border-radius: 0.75rem !important;
+  color: #ffffff !important;
+  padding: 0.75rem 1rem !important;
+}
+
+input:focus, textarea:focus, select:focus, .form-control:focus, .input:focus, [class*="form-"]:focus, [class*="input-"]:focus {
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1) !important;
+  outline: none !important;
+}
+
+input::placeholder, textarea::placeholder, [class*="form-"]::placeholder, [class*="input-"]::placeholder {
+  color: #9ca3af !important;
+}
+
+label, .form-label, [class*="label-"] {
+  color: #d1d5db !important;
+  font-weight: 500 !important;
+}
+
+/* ==========================================
+   FOOTER STYLING
+   ========================================== */
+
+/* Footer */
+footer, .footer, [class*="footer"] {
+  background: #0c0a0f !important;
+  border-top: 1px solid #3f3451 !important;
+  color: #d1d5db !important;
+}
+
+footer a, .footer a, [class*="footer"] a {
+  color: #d1d5db !important;
+}
+
+footer a:hover, .footer a:hover, [class*="footer"] a:hover {
+  color: #fb923c !important;
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, .footer h1, .footer h2, .footer h3, .footer h4, .footer h5, .footer h6, [class*="footer"] h1, [class*="footer"] h2, [class*="footer"] h3, [class*="footer"] h4, [class*="footer"] h5, [class*="footer"] h6 {
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   HERO SECTION SPECIAL STYLING
+   ========================================== */
+
+/* Hero section background */
+.hero, .hero-section, [class*="hero"], [class*="hero-"] {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, transparent 70%) !important;
+}
+
+/* Hero titles with gradient */
+.hero h1, .hero-section h1, [class*="hero"] h1, [class*="hero-"] h1 {
+  background: linear-gradient(135deg, #fb923c, #fbbf24) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* ==========================================
+   BACKGROUND COLORS
+   ========================================== */
+
+/* Main backgrounds */
+.bg-surfe-background, .bg-surfe-white, .bg-white, [class*="bg-surfe-"], [class*="bg-white"] {
+  background: #0c0a0f !important;
+}
+
+/* Section backgrounds */
+.bg-surfe-gray-50, .bg-surfe-gray-100, .bg-surfe-gray-200, [class*="bg-surfe-gray-"] {
+  background: #1a1625 !important;
+}
+
+/* Card backgrounds */
+.bg-surfe-primary, [class*="bg-surfe-primary"] {
+  background: rgba(26, 22, 37, 0.6) !important;
+}
+
+/* ==========================================
+   TEXT COLORS
+   ========================================== */
+
+/* Primary text */
+.text-surfe-primary, .text-surfe-text-primary, [class*="text-surfe-primary"], [class*="text-surfe-text-primary"] {
+  color: #ffffff !important;
+}
+
+/* Secondary text */
+.text-surfe-text-secondary, .text-surfe-gray-500, [class*="text-surfe-text-secondary"], [class*="text-surfe-gray-"] {
+  color: #d1d5db !important;
+}
+
+/* Muted text */
+.text-surfe-text-light, .text-surfe-gray-400, [class*="text-surfe-text-light"], [class*="text-surfe-gray-"] {
+  color: #9ca3af !important;
+}
+
+/* ==========================================
+   BORDER COLORS
+   ========================================== */
+
+/* Borders */
+.border-surfe-200, .border-surfe-gray-200, [class*="border-surfe-"], [class*="border-surfe-gray-"] {
+  border-color: #3f3451 !important;
+}
+
+/* ==========================================
+   SPECIAL EFFECTS
+   ========================================== */
+
+/* Glow effects on hover */
+button:hover, .btn:hover, .button:hover, [class*="btn-"]:hover, [class*="button"]:hover {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.3s ease !important;
+}
+
+/* ==========================================
+   RESPONSIVE OVERRIDES
+   ========================================== */
+
+/* Ensure dark theme works on all screen sizes */
+@media (max-width: 768px) {
+  body {
+    background: #0c0a0f !important;
+  }
+  
+  .card, [class*="card-"] {
+    background: rgba(26, 22, 37, 0.8) !important;
+  }
+}
+
+/* ==========================================
+   UTILITY OVERRIDES
+   ========================================== */
+
+/* Override any remaining light theme elements */
+.bg-opacity-20, .bg-opacity-10, .bg-opacity-5 {
+  background-color: rgba(26, 22, 37, 0.6) !important;
+}
+
+/* Ensure all text is readable on dark backgrounds */
+.text-black, .text-gray-900, .text-gray-800, .text-gray-700 {
+  color: #ffffff !important;
+}
+
+.text-gray-600, .text-gray-500, .text-gray-400 {
+  color: #d1d5db !important;
+}
+
+.text-gray-300, .text-gray-200, .text-gray-100 {
+  color: #9ca3af !important;
+} 
+
+/* ==========================================
+   SERVICES PAGE SPECIFIC STYLING
+   ========================================== */
+
+/* "Choose Your Data Solution" badge */
+.bg-blue-100 {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.bg-blue-100:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* "Our Process" badge */
+.bg-blue-100.text-blue-700 {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.bg-blue-100.text-blue-700:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Alternative selector for process badge */
+.bg-blue-100:has(.mr-2) {
+  background: #7c3aed !important;
+  color: #ffffff !important;
+  transition: all 0.3s ease !important;
+}
+
+.bg-blue-100:has(.mr-2):hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+} 
+
+/* ==========================================
+   3D WIREFRAME ANIMATION BACKGROUNDS
+   PURELY ADDITIVE - NO EXISTING CHANGES
+   ========================================== */
+
+/* 3D Background Container */
+.nugget-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Wireframe Grid */
+.nugget-wireframe-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: nugget-grid-move 30s linear infinite;
+}
+
+/* Large Rotating Sphere */
+.nugget-wireframe-sphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  opacity: 0.3;
+  animation: nugget-rotate-slow 20s linear infinite;
+}
+
+.nugget-wireframe-sphere::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(124, 58, 237, 0.2) 90deg,
+    transparent 180deg,
+    rgba(251, 146, 60, 0.2) 270deg,
+    transparent 360deg
+  );
+  opacity: 0.2;
+  animation: nugget-rotate-fast 10s linear infinite reverse;
+}
+
+/* Small Rotating Sphere */
+.nugget-wireframe-sphere-small {
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid rgba(251, 146, 60, 0.2);
+  opacity: 0.2;
+  animation: nugget-rotate-slow 15s linear infinite reverse;
+}
+
+/* Geometric Shapes */
+.nugget-geometric-shapes {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(251, 146, 60, 0.2);
+  opacity: 0.2;
+  animation: nugget-float 6s ease-in-out infinite;
+}
+
+.nugget-geometric-shapes::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(124, 58, 237, 0.2);
+}
+
+/* Glow Orb */
+.nugget-glow-orb {
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: nugget-pulse 4s ease-in-out infinite;
+}
+
+/* Floating Particles */
+.nugget-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.nugget-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 50%;
+  animation: nugget-particle-float 8s ease-in-out infinite;
+}
+
+.nugget-particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.nugget-particle:nth-child(2) {
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.nugget-particle:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+/* 3D Animation Keyframes */
+@keyframes nugget-rotate-slow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes nugget-rotate-fast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes nugget-grid-move {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, 50px); }
+}
+
+@keyframes nugget-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes nugget-pulse {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.1); }
+}
+
+@keyframes nugget-particle-float {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+  50% { transform: translateY(-10px) translateX(-5px); opacity: 0.6; }
+  75% { transform: translateY(-15px) translateX(15px); opacity: 0.9; }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .nugget-wireframe-sphere {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .nugget-wireframe-sphere-small {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .nugget-geometric-shapes {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .nugget-glow-orb {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .nugget-particle {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nugget-wireframe-sphere {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .nugget-wireframe-sphere-small {
+    display: none;
+  }
+  
+  .nugget-geometric-shapes {
+    display: none;
+  }
+  
+  .nugget-glow-orb {
+    display: none;
+  }
+} 

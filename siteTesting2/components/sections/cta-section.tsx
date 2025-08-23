@@ -5,6 +5,15 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 export function CtaSection() {
   return (
     <section className="py-20 bg-surfe-primary relative">
+      {/* 3D Background - Subtle Effect */}
+      <div className="nugget-hero-bg">
+        <div className="nugget-wireframe-grid"></div>
+        <div className="nugget-particles">
+          <div className="nugget-particle"></div>
+          <div className="nugget-particle"></div>
+        </div>
+      </div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="inline-flex items-center px-4 py-2 bg-surfe-white/20 text-surfe-white rounded-full text-sm font-semibold mb-6">
@@ -25,7 +34,7 @@ export function CtaSection() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button 
               size="lg" 
-              className="bg-surfe-white text-surfe-primary hover:bg-surfe-gray-100 text-lg px-10 py-5 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white text-lg px-10 py-5 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
               asChild
             >
               <Link href="/contact">

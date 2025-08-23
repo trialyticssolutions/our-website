@@ -1,31 +1,42 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, BarChart3, Users, TrendingUp, CheckCircle, Sparkles } from 'lucide-react'
+import { ArrowRight, BarChart3, Users, TrendingUp, CheckCircle, Sparkles, Shield } from 'lucide-react'
 import { HERO_STATS } from '@/data/constants'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surfe-background">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-surfe-primary/5 via-transparent to-surfe-button-light/5" />
+    <section className="relative pt-32 pb-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+      {/* 3D Background - Full Effect */}
+      <div className="nugget-hero-bg">
+        <div className="nugget-wireframe-grid"></div>
+        <div className="nugget-wireframe-sphere"></div>
+        <div className="nugget-wireframe-sphere-small"></div>
+        <div className="nugget-geometric-shapes"></div>
+        <div className="nugget-glow-orb"></div>
+        <div className="nugget-particles">
+          <div className="nugget-particle"></div>
+          <div className="nugget-particle"></div>
+          <div className="nugget-particle"></div>
+        </div>
+      </div>
       
-      {/* Animated background elements */}
+      {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-surfe-button-light/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-surfe-primary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-surfe-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-300/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center px-6 py-3 bg-surfe-button-light text-surfe-primary rounded-full text-sm font-semibold mb-8">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-8 opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
             <Sparkles className="h-4 w-4 mr-2" />
             Trusted by 50+ Growing Businesses
           </div>
 
           {/* Main headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-surfe-primary mb-8 leading-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-surfe-primary mb-8 leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Unlock Your Data's
             <span className="block text-surfe-primary">
               Full Potential
@@ -33,13 +44,13 @@ export function HeroSection() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl sm:text-2xl text-surfe-text-secondary mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             Transforming raw data into actionable insights and automated solutions for scalable growth. 
             From database setup to AI automation, we've got you covered.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
             <Button 
               size="lg" 
               className="bg-surfe-primary hover:bg-surfe-700 text-surfe-white text-lg px-10 py-5 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
@@ -62,18 +73,20 @@ export function HeroSection() {
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-surfe-200">
-            {HERO_STATS.map((stat, index) => (
-              <div key={index} className="text-center group">
-                <div className="text-4xl sm:text-5xl font-bold text-surfe-primary mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {stat.value}
-                </div>
-                <div className="text-base sm:text-lg text-surfe-text-secondary font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* Trust indicators */}
+          <div className="flex flex-wrap justify-center items-center gap-8 mt-12 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <CheckCircle className="h-5 w-5 text-green-500" />
+              <span className="text-sm font-medium">ISO 27001 Certified</span>
+            </div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Shield className="h-5 w-5 text-blue-500" />
+              <span className="text-sm font-medium">GDPR Compliant</span>
+            </div>
+            <div className="flex items-center space-x-2 text-gray-600">
+              <Users className="h-5 w-5 text-purple-500" />
+              <span className="text-sm font-medium">500+ Projects Delivered</span>
+            </div>
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg" style={{marginTop: '4rem'}}>
           {[
             {
               name: 'Sarah Johnson',
@@ -90,14 +90,14 @@ export function TestimonialsSection() {
               color: 'from-orange-500 to-red-500'
             }
           ].map((testimonial, index) => (
-            <div key={index} className="group bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+            <div key={index} className="group card-surfe p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
               <div className="flex items-center mb-6">
                 <div className={`w-12 h-12 bg-gradient-to-r ${testimonial.color} rounded-xl flex items-center justify-center text-white font-semibold text-lg mr-4`}>
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role} at {testimonial.company}</div>
+                  <div className="font-semibold text-white">{testimonial.name}</div>
+                  <div className="text-sm text-gray-400">{testimonial.role} at {testimonial.company}</div>
                 </div>
               </div>
               
@@ -107,12 +107,12 @@ export function TestimonialsSection() {
                 ))}
               </div>
               
-              <p className="text-gray-700 leading-relaxed mb-6">
+              <p className="text-gray-300 leading-relaxed mb-6">
                 "{testimonial.content}"
               </p>
               
               <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-400">
                   Verified Client
                 </div>
                 <CheckCircle className="h-5 w-5 text-green-500" />
@@ -121,7 +121,7 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        <div className="text-center element-spacing-lg">
+        <div className="text-center element-spacing-md">
           <Button 
             className="btn-secondary btn-lg"
             asChild

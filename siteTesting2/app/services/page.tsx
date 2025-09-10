@@ -395,7 +395,6 @@ export default function ServicesPage() {
 
       {/* Services Grid - All 8 Services with Compact Cards */}
       <section className="py-20 bg-white relative">
-        <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-50 to-transparent"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
@@ -430,7 +429,7 @@ export default function ServicesPage() {
                         <IconComponent className="h-6 w-6 text-white" />
                       </div>
                     </div>
-                    <CardTitle className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                    <CardTitle className="text-lg font-semibold mb-2 text-gray-900 group-hover:text-surfe-primary transition-colors duration-300">
                       {service.title}
                     </CardTitle>
                     <CardDescription className="text-sm text-gray-600 leading-relaxed">
@@ -449,15 +448,15 @@ export default function ServicesPage() {
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-surfe-background border border-surfe-primary/20">
                         <DialogHeader>
                           <div className="flex items-center space-x-3 mb-4">
-                            <div className={`w-12 h-12 bg-gradient-to-r ${colors[index % colors.length]} rounded-xl flex items-center justify-center`}>
+                            <div className="w-12 h-12 bg-surfe-primary rounded-xl flex items-center justify-center">
                               <IconComponent className="h-6 w-6 text-white" />
                             </div>
                             <div>
-                              <DialogTitle className="text-2xl text-left">{service.title}</DialogTitle>
-                              <DialogDescription className="text-lg text-left">
+                              <DialogTitle className="text-2xl text-left text-surfe-text-primary">{service.title}</DialogTitle>
+                              <DialogDescription className="text-lg text-left text-surfe-text-secondary">
                                 {service.description}
                               </DialogDescription>
                             </div>
@@ -467,21 +466,21 @@ export default function ServicesPage() {
                         <div className="space-y-6 mt-6">
                           {/* Full Description */}
                           <div>
-                            <h4 className="font-semibold text-foreground mb-2 text-lg">Overview</h4>
-                            <p className="text-muted-foreground leading-relaxed">{service.fullDescription}</p>
+                            <h4 className="font-semibold text-surfe-text-primary mb-2 text-lg">Overview</h4>
+                            <p className="text-surfe-text-secondary leading-relaxed">{service.fullDescription}</p>
                           </div>
 
                           {/* Features */}
                           <div>
-                            <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
-                              <Check className="h-5 w-5 text-green-500 mr-2" />
+                            <h4 className="font-semibold text-surfe-text-primary mb-3 text-lg flex items-center">
+                              <Check className="h-5 w-5 text-surfe-primary mr-2" />
                               What's Included
                             </h4>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                               {service.features.map((feature: string, idx: number) => (
                                 <div key={idx} className="flex items-start space-x-3">
-                                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                                  <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
+                                  <div className="w-2 h-2 bg-surfe-primary rounded-full mt-2 flex-shrink-0" />
+                                  <span className="text-sm text-surfe-text-secondary leading-relaxed">{feature}</span>
                                 </div>
                               ))}
                             </div>
@@ -489,22 +488,22 @@ export default function ServicesPage() {
 
                           {/* Target Audience */}
                           <div>
-                            <h4 className="font-semibold text-foreground mb-2 text-lg flex items-center">
-                              <Target className="h-5 w-5 text-blue-500 mr-2" />
+                            <h4 className="font-semibold text-surfe-text-primary mb-2 text-lg flex items-center">
+                              <Target className="h-5 w-5 text-surfe-primary mr-2" />
                               Target Audience
                             </h4>
-                            <p className="text-muted-foreground leading-relaxed">{service.targetAudience}</p>
+                            <p className="text-surfe-text-secondary leading-relaxed">{service.targetAudience}</p>
                           </div>
 
                           {/* Key Benefits */}
                           <div>
-                            <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
-                              <Star className="h-5 w-5 text-yellow-500 mr-2" />
+                            <h4 className="font-semibold text-surfe-text-primary mb-3 text-lg flex items-center">
+                              <Star className="h-5 w-5 text-surfe-primary mr-2" />
                               Key Benefits
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {service.benefits.map((benefit: string, idx: number) => (
-                                <Badge key={idx} variant="outline" className="text-sm border-green-500/20 text-green-400 px-3 py-1">
+                                <Badge key={idx} variant="outline" className="text-sm border-surfe-primary/20 text-surfe-primary px-3 py-1">
                                   {benefit}
                                 </Badge>
                               ))}
@@ -514,23 +513,23 @@ export default function ServicesPage() {
                           {/* Technologies */}
                           {service.technologies && service.technologies.length > 0 && (
                             <div>
-                              <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
-                                <Zap className="h-5 w-5 text-blue-500 mr-2" />
-                                Technologies & Tools
-                              </h4>
+                              <h4 className="font-semibold text-surfe-text-primary mb-3 text-lg flex items-center">
+                                 <Zap className="h-5 w-5 text-surfe-primary mr-2" />
+                                 Technologies & Tools
+                               </h4>
                               <div className="flex flex-wrap gap-2">
                                 {service.technologies.map((tech: string, idx: number) => (
-                                  <Badge key={idx} className="bg-blue-500/10 text-blue-400 text-sm px-3 py-1">
-                                    {tech}
-                                  </Badge>
+                                  <Badge key={idx} className="bg-surfe-primary/10 text-surfe-primary text-sm px-3 py-1">
+                                     {tech}
+                                   </Badge>
                                 ))}
                               </div>
                             </div>
                           )}
 
                           {/* CTA */}
-                          <div className="pt-4 border-t border-border">
-                            <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+                          <div className="pt-4 border-t border-surfe-primary/20">
+                            <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300" asChild>
                               <Link href="/contact">
                                 Get Started with {service.title}
                                 <ArrowRight className="ml-2 h-4 w-4" />

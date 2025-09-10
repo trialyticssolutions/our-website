@@ -33,7 +33,7 @@ export function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg" style={{marginTop: '4rem'}}>
           {SERVICES.slice(0, 6).map((service, index) => {
             const IconComponent = iconMap[service.icon as keyof typeof iconMap] || Database
             const colors = [
@@ -46,16 +46,16 @@ export function ServicesOverview() {
             ]
 
             return (
-              <div key={service.id} className="group bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={service.id} className="group card-surfe p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="flex items-center mb-6">
                   <div className={`w-12 h-12 bg-gradient-to-r ${colors[index % colors.length]} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                     <IconComponent className="h-6 w-6 text-white" />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-4 text-white group-hover:text-blue-400 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-surfe-text-secondary mb-6 leading-relaxed flex-grow">
+                <p className="text-gray-300 mb-6 leading-relaxed flex-grow">
                   {service.description}
                 </p>
                 <div className="mt-auto">
@@ -74,7 +74,7 @@ export function ServicesOverview() {
           })}
         </div>
 
-        <div className="text-center element-spacing-lg">
+        <div className="text-center element-spacing-md">
           <Button 
             className="btn-primary btn-lg"
             asChild

@@ -244,15 +244,15 @@
 
   /* Consistent Spacing System */
   .section-spacing {
-    @apply py-20 lg:py-32; /* 80px mobile, 128px desktop */
-  }
-
-  .section-spacing-sm {
     @apply py-12 lg:py-20; /* 48px mobile, 80px desktop */
   }
 
+  .section-spacing-sm {
+    @apply py-8 lg:py-12; /* 32px mobile, 48px desktop */
+  }
+
   .section-spacing-lg {
-    @apply py-24 lg:py-40; /* 96px mobile, 160px desktop */
+    @apply py-16 lg:py-24; /* 64px mobile, 96px desktop */
   }
 
   /* Text Spacing System */
@@ -401,7 +401,7 @@
 
   /* Surfe-style cards */
   .card-surfe {
-    @apply bg-white rounded-2xl shadow-surfe border border-neutral-100 hover:shadow-surfe-lg transition-all duration-300;
+    @apply bg-gray-900 rounded-2xl shadow-surfe border border-gray-800 hover:shadow-surfe-lg transition-all duration-300;
   }
 
   .card-hover {

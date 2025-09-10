@@ -5,7 +5,7 @@ import { HERO_STATS } from '@/data/constants'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden section-spacing">
+    <section className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-32">
       {/* 3D Background - Full Effect */}
       <div className="nugget-hero-bg">
         <div className="nugget-wireframe-grid"></div>
@@ -29,12 +29,6 @@ export function HeroSection() {
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 text-spacing">
-          {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-8 opacity-0 animate-fade-in-up" style={{ animationFillMode: 'forwards' }}>
-            <Sparkles className="h-4 w-4 mr-2" />
-            Trusted by 50+ Growing Businesses
-          </div>
-
           {/* Main headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-surfe-primary element-spacing-md leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Unlock Your Data's

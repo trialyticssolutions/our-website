@@ -44,14 +44,14 @@ const TESTIMONIALS = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="section-spacing bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
+        <div className="text-center text-spacing">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold element-spacing-sm">
             <Star className="h-4 w-4 mr-2" />
             Client Success Stories
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary element-spacing-sm">
             What Our
             <span className="block text-surfe-primary">Clients Say</span>
           </h2>
@@ -60,7 +60,7 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg">
           {[
             {
               name: 'Sarah Johnson',
@@ -121,11 +121,9 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center element-spacing-md">
           <Button 
-            size="lg" 
-            variant="outline"
-            className="border-black text-black hover:bg-gray-50 hover:text-black text-lg px-8 py-4 h-auto transition-all duration-300"
+            className="btn-secondary btn-lg text-lg"
             asChild
           >
             <Link href="/testimonials">
@@ -137,4 +135,4 @@ export function TestimonialsSection() {
       </div>
     </section>
   )
-} 
+}

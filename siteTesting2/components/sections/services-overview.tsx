@@ -16,30 +16,24 @@ const iconMap = {
 
 export function ServicesOverview() {
   return (
-    <section className="py-20 bg-white relative">
-      {/* 3D Background - Moderate Effect */}
-      <div className="nugget-hero-bg">
-        <div className="nugget-wireframe-grid"></div>
-        <div className="nugget-wireframe-sphere-small"></div>
-        <div className="nugget-geometric-shapes"></div>
-      </div>
-      
+    <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
+        <div className="text-center text-spacing">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold element-spacing-sm">
             <Sparkles className="h-4 w-4 mr-2" />
             Our Services
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
-            Comprehensive
-            <span className="block text-orange-custom">Solutions</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary element-spacing-sm">
+            Comprehensive Data
+            <span className="block text-surfe-primary">Solutions</span>
           </h2>
           <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
-            From data infrastructure to AI automation, we provide end-to-end solutions that drive your business forward
+            From database architecture to AI automation, we provide end-to-end data solutions 
+            that drive measurable business growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg">
           {SERVICES.slice(0, 6).map((service, index) => {
             const IconComponent = iconMap[service.icon as keyof typeof iconMap] || Database
             const colors = [
@@ -81,8 +75,7 @@ export function ServicesOverview() {
 
         <div className="text-center mt-12">
           <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white text-lg px-8 py-4 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
+            className="btn-primary btn-lg text-lg"
             asChild
           >
             <Link href="/services">
@@ -94,4 +87,4 @@ export function ServicesOverview() {
       </div>
     </section>
   )
-} 
+}

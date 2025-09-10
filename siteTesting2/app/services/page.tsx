@@ -467,13 +467,13 @@ export default function ServicesPage() {
                         <div className="space-y-6 mt-6">
                           {/* Full Description */}
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-2 text-lg">Overview</h4>
-                            <p className="text-gray-700 leading-relaxed">{service.fullDescription}</p>
+                            <h4 className="font-semibold text-foreground mb-2 text-lg">Overview</h4>
+                            <p className="text-muted-foreground leading-relaxed">{service.fullDescription}</p>
                           </div>
 
                           {/* Features */}
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                            <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
                               <Check className="h-5 w-5 text-green-500 mr-2" />
                               What's Included
                             </h4>
@@ -481,7 +481,7 @@ export default function ServicesPage() {
                               {service.features.map((feature: string, idx: number) => (
                                 <div key={idx} className="flex items-start space-x-3">
                                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                                  <span className="text-sm text-gray-700 leading-relaxed">{feature}</span>
+                                  <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
                                 </div>
                               ))}
                             </div>
@@ -489,22 +489,22 @@ export default function ServicesPage() {
 
                           {/* Target Audience */}
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-2 text-lg flex items-center">
+                            <h4 className="font-semibold text-foreground mb-2 text-lg flex items-center">
                               <Target className="h-5 w-5 text-blue-500 mr-2" />
                               Target Audience
                             </h4>
-                            <p className="text-gray-700 leading-relaxed">{service.targetAudience}</p>
+                            <p className="text-muted-foreground leading-relaxed">{service.targetAudience}</p>
                           </div>
 
                           {/* Key Benefits */}
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                            <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
                               <Star className="h-5 w-5 text-yellow-500 mr-2" />
                               Key Benefits
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {service.benefits.map((benefit: string, idx: number) => (
-                                <Badge key={idx} variant="outline" className="text-sm border-green-200 text-green-700 px-3 py-1">
+                                <Badge key={idx} variant="outline" className="text-sm border-green-500/20 text-green-400 px-3 py-1">
                                   {benefit}
                                 </Badge>
                               ))}
@@ -514,13 +514,13 @@ export default function ServicesPage() {
                           {/* Technologies */}
                           {service.technologies && service.technologies.length > 0 && (
                             <div>
-                              <h4 className="font-semibold text-gray-900 mb-3 text-lg flex items-center">
+                              <h4 className="font-semibold text-foreground mb-3 text-lg flex items-center">
                                 <Zap className="h-5 w-5 text-blue-500 mr-2" />
                                 Technologies & Tools
                               </h4>
                               <div className="flex flex-wrap gap-2">
                                 {service.technologies.map((tech: string, idx: number) => (
-                                  <Badge key={idx} className="bg-blue-100 text-blue-700 text-sm px-3 py-1">
+                                  <Badge key={idx} className="bg-blue-500/10 text-blue-400 text-sm px-3 py-1">
                                     {tech}
                                   </Badge>
                                 ))}
@@ -529,7 +529,7 @@ export default function ServicesPage() {
                           )}
 
                           {/* CTA */}
-                          <div className="pt-4 border-t border-gray-200">
+                          <div className="pt-4 border-t border-border">
                             <Button className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-xl transition-all duration-300" asChild>
                               <Link href="/contact">
                                 Get Started with {service.title}
@@ -618,4 +618,4 @@ export default function ServicesPage() {
       <CtaSection />
     </MainLayout>
   )
-} 
+}

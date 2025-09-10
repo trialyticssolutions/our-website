@@ -1,4 +1,7 @@
+"use client"
+
 import { Users, TrendingUp, Award, Star, CheckCircle, Sparkles, Shield, Clock } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const CLIENTS = [
   { name: 'TechCorp', logo: 'TC' },
@@ -7,6 +10,10 @@ const CLIENTS = [
   { name: 'CloudSync', logo: 'CS' },
   { name: 'SmartBiz', logo: 'SB' },
   { name: 'FutureTech', logo: 'FT' },
+  { name: 'Company A', logo: 'CA' },
+  { name: 'Company B', logo: 'CB' },
+  { name: 'Company C', logo: 'CC' },
+  { name: 'Company D', logo: 'CD' },
 ]
 
 const ACHIEVEMENTS = [
@@ -15,6 +22,69 @@ const ACHIEVEMENTS = [
   { value: '50+', label: 'Team Members', icon: Users },
   { value: '24/7', label: 'Support Available', icon: Award },
 ]
+
+function ClientCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const itemsPerView = 3
+  const totalItems = CLIENTS.length
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = prevIndex + itemsPerView
+        return nextIndex >= totalItems ? 0 : nextIndex
+      })
+    }, 5000) // Auto-rotate every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const getVisibleClients = () => {
+    const visible = []
+    for (let i = 0; i < itemsPerView; i++) {
+      const index = (currentIndex + i) % totalItems
+      visible.push(CLIENTS[index])
+    }
+    return visible
+  }
+
+  return (
+    <div className="element-spacing-lg text-center">
+      <h3 className="text-2xl font-semibold text-gray-600 element-spacing-md">Trusted by Industry Leaders</h3>
+      <div className="relative overflow-hidden">
+        <div className="flex justify-center items-center gap-12 transition-all duration-1000 ease-in-out">
+          {getVisibleClients().map((client, index) => (
+            <div 
+              key={`${client.name}-${currentIndex}-${index}`}
+              className="w-32 h-12 bg-gray-200 rounded-lg flex items-center justify-center opacity-60 hover:opacity-100 transform hover:scale-105 transition-all duration-300 animate-fade-in"
+              style={{
+                animation: `fadeInRotate 1s ease-in-out ${index * 0.2}s both`
+              }}
+            >
+              <span className="text-gray-500 font-semibold">{client.name}</span>
+            </div>
+          ))}
+        </div>
+        
+        {/* Carousel indicators */}
+        <div className="flex justify-center element-spacing-sm space-x-2">
+          {Array.from({ length: Math.ceil(totalItems / itemsPerView) }).map((_, index) => {
+            const isActive = Math.floor(currentIndex / itemsPerView) === index
+            return (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  isActive ? 'bg-blue-500 w-6' : 'bg-gray-300'
+                }`}
+                onClick={() => setCurrentIndex(index * itemsPerView)}
+              />
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function TrustIndicators() {
   return (
@@ -78,25 +148,9 @@ export function TrustIndicators() {
           ))}
         </div>
 
-        {/* Client logos */}
-        <div className="mt-20 text-center">
-          <h3 className="text-2xl font-semibold text-gray-600 mb-12">Trusted by Industry Leaders</h3>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            <div className="w-32 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500 font-semibold">Company A</span>
-            </div>
-            <div className="w-32 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500 font-semibold">Company B</span>
-            </div>
-            <div className="w-32 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500 font-semibold">Company C</span>
-            </div>
-            <div className="w-32 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500 font-semibold">Company D</span>
-            </div>
-          </div>
-        </div>
+        {/* Client logos carousel */}
+        <ClientCarousel />
       </div>
     </section>
   )
-} 
+}

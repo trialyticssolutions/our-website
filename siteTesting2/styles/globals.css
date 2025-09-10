@@ -165,28 +165,15 @@
   .bg-surfe-gray-800 { background-color: var(--surfe-gray-800); }
   .bg-surfe-gray-900 { background-color: var(--surfe-gray-900); }
 
-  /* Custom Navigation Active Link Styles */
+  /* Clean Navigation Styles */
   .nav-link-active {
-    color: #8b5cf6 !important;
+    color: var(--surfe-primary) !important;
     font-weight: 600 !important;
+    background-color: var(--surfe-button-light) !important;
   }
 
   .nav-link-active:hover {
-    color: #8b5cf6 !important;
-  }
-
-  /* More specific selectors to override any conflicts */
-  a.nav-link-active,
-  .nav-link-active a,
-  Link.nav-link-active {
-    color: #8b5cf6 !important;
-    font-weight: 600 !important;
-  }
-
-  a.nav-link-active:hover,
-  .nav-link-active a:hover,
-  Link.nav-link-active:hover {
-    color: #8b5cf6 !important;
+    color: var(--surfe-primary) !important;
   }
 
   /* Remove any purple glow effects from navigation */
@@ -253,6 +240,116 @@
   ::-webkit-scrollbar-thumb {
     background-color: var(--surfe-primary);
     border-radius: 9999px;
+  }
+
+  /* Consistent Spacing System */
+  .section-spacing {
+    @apply py-20 lg:py-32; /* 80px mobile, 128px desktop */
+  }
+
+  .section-spacing-sm {
+    @apply py-12 lg:py-20; /* 48px mobile, 80px desktop */
+  }
+
+  .section-spacing-lg {
+    @apply py-24 lg:py-40; /* 96px mobile, 160px desktop */
+  }
+
+  /* Text Spacing System */
+  .text-spacing h1,
+  .text-spacing h2,
+  .text-spacing h3,
+  .text-spacing h4,
+  .text-spacing h5,
+  .text-spacing h6 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .text-spacing p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .text-spacing p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Element Spacing Utilities */
+  .element-spacing-xs { @apply mb-4; } /* 16px */
+  .element-spacing-sm { @apply mb-6; } /* 24px */
+  .element-spacing-md { @apply mb-8; } /* 32px */
+  .element-spacing-lg { @apply mb-12; } /* 48px */
+
+  /* Button Spacing Standards */
+  .btn-spacing-sm { @apply px-6 py-3; } /* 24px horizontal, 12px vertical */
+  .btn-spacing-md { @apply px-8 py-4; } /* 32px horizontal, 16px vertical */
+  .btn-spacing-lg { @apply px-10 py-5; } /* 40px horizontal, 20px vertical */
+
+  /* Card and Component Spacing */
+  .card-spacing { @apply gap-4 lg:gap-6; } /* 16px mobile, 24px desktop */
+  .grid-spacing { @apply gap-6 lg:gap-8; } /* 24px mobile, 32px desktop */
+
+  /* CTA Button Design System */
+  .btn-primary {
+    @apply bg-surfe-primary hover:bg-surfe-700 text-white font-medium;
+    @apply px-8 py-4 rounded-full transition-all duration-300;
+    @apply shadow-md hover:shadow-lg hover:scale-105;
+    @apply border-0 focus:outline-none focus:ring-2 focus:ring-surfe-primary focus:ring-offset-2;
+    min-height: 48px; /* Accessibility - minimum touch target */
+  }
+
+  .btn-primary:active {
+    @apply scale-95 shadow-sm;
+    background-color: #052e36; /* Darker shade for active state */
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-surfe-primary text-surfe-primary;
+    @apply hover:bg-surfe-primary hover:text-white font-medium;
+    @apply px-8 py-4 rounded-full transition-all duration-300;
+    @apply shadow-sm hover:shadow-md hover:scale-105;
+    @apply focus:outline-none focus:ring-2 focus:ring-surfe-primary focus:ring-offset-2;
+    min-height: 48px; /* Accessibility - minimum touch target */
+  }
+
+  .btn-secondary:active {
+    @apply scale-95 shadow-none;
+    background-color: var(--surfe-primary);
+    color: white;
+  }
+
+  .btn-light {
+    @apply bg-surfe-button-light border-2 border-surfe-button-light text-surfe-primary;
+    @apply hover:bg-surfe-white hover:border-surfe-primary font-medium;
+    @apply px-8 py-4 rounded-full transition-all duration-300;
+    @apply shadow-sm hover:shadow-md hover:scale-105;
+    @apply focus:outline-none focus:ring-2 focus:ring-surfe-primary focus:ring-offset-2;
+    min-height: 48px; /* Accessibility - minimum touch target */
+  }
+
+  .btn-light:active {
+    @apply scale-95 shadow-none;
+    background-color: var(--surfe-white);
+    border-color: var(--surfe-primary);
+  }
+
+  /* Button Size Variants */
+  .btn-sm {
+    @apply px-6 py-3 text-sm;
+    min-height: 40px;
+  }
+
+  .btn-lg {
+    @apply px-10 py-5 text-lg;
+    min-height: 56px;
+  }
+
+  /* Ensure all buttons meet accessibility contrast requirements */
+  .btn-primary,
+  .btn-secondary:hover,
+  .btn-light {
+    /* These combinations provide 4.5:1+ contrast ratio */
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -632,6 +729,21 @@
     }
   }
 
+  @keyframes fadeInRotate {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) rotateY(-15deg) scale(0.9);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translateY(10px) rotateY(0deg) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) rotateY(0deg) scale(1);
+    }
+  }
+
   /* Surfe-style glass effect */
   .glass {
     @apply bg-white/80 backdrop-blur-sm border border-white/20;
@@ -753,10 +865,10 @@ section, .section, [class*="section"] {
 
 /* Navigation bar - Dark with backdrop blur */
 nav, .navbar, .nav, .navigation, header, [class*="nav"], [class*="navbar"] {
-  background: rgba(12, 10, 15, 0.9) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  border-bottom: 1px solid #3f3451 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
 }
 
 /* Navigation links */
@@ -1321,4 +1433,4 @@ h3 .text-orange-custom {
   .nav-link-active:hover {
     color: #8b5cf6 !important;
   }
-} 
+}

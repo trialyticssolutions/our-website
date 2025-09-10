@@ -20,4 +20,4 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Toaster />
     </div>
   )
-} 
+}

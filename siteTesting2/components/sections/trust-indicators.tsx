@@ -88,14 +88,14 @@ function ClientCarousel() {
 
 export function TrustIndicators() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <section className="section-spacing bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-6">
+        <div className="text-center text-spacing">
+          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold element-spacing-sm">
             <Shield className="h-4 w-4 mr-2" />
             Why Choose Us
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary element-spacing-sm">
             Trusted by
             <span className="block text-orange-custom">Leading Companies</span>
           </h2>

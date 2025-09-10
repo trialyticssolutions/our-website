@@ -5,7 +5,7 @@ import { HERO_STATS } from '@/data/constants'
 
 export function HeroSection() {
   return (
-    <section className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-32">
+    <section className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden section-spacing">
       {/* 3D Background - Full Effect */}
       <div className="nugget-hero-bg">
         <div className="nugget-wireframe-grid"></div>
@@ -30,7 +30,7 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 text-spacing">
           {/* Main headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-surfe-primary element-spacing-md leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-surfe-primary element-spacing-sm leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
             Unlock Your Data's
             <span className="block text-orange-custom">
               Full Potential
@@ -38,13 +38,13 @@ export function HeroSection() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto element-spacing-lg opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
             Transforming raw data into actionable insights and automated solutions for scalable growth. 
             From database setup to AI automation, we've got you covered.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-lg opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
             <Button 
               className="btn-primary btn-lg text-lg"
               asChild
@@ -65,7 +65,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 element-spacing-lg opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
+          <div className="flex flex-wrap justify-center items-center gap-8 element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
             <div className="flex items-center space-x-2 text-orange-custom">
               <CheckCircle className="h-5 w-5 text-green-500" />
               <span className="text-sm font-medium">ISO 27001 Certified</span>

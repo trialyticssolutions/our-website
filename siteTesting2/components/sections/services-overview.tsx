@@ -27,13 +27,13 @@ export function ServicesOverview() {
             Comprehensive Data
             <span className="block text-surfe-primary">Solutions</span>
           </h2>
-          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed element-spacing-md">
             From database architecture to AI automation, we provide end-to-end data solutions 
             that drive measurable business growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {SERVICES.slice(0, 6).map((service, index) => {
             const IconComponent = iconMap[service.icon as keyof typeof iconMap] || Database
             const colors = [
@@ -46,7 +46,7 @@ export function ServicesOverview() {
             ]
 
             return (
-              <div key={service.id} className="group bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={service.id} className="group bg-white rounded-2xl border border-gray-200 p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="flex items-center mb-6">
                   <div className={`w-12 h-12 bg-gradient-to-r ${colors[index % colors.length]} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                     <IconComponent className="h-6 w-6 text-white" />
@@ -55,27 +55,28 @@ export function ServicesOverview() {
                 <h3 className="text-xl font-semibold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-surfe-text-secondary mb-6 leading-relaxed">
+                <p className="text-surfe-text-secondary mb-6 leading-relaxed flex-grow">
                   {service.description}
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="border-black text-black hover:bg-gray-50 hover:text-black rounded-lg transition-all duration-300"
-                  asChild
-                >
-                  <Link href={`/services#${service.id}`}>
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                <div className="mt-auto">
+                  <Button 
+                    className="w-full btn-primary"
+                    asChild
+                  >
+                    <Link href={`/services#${service.id}`}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             )
           })}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center element-spacing-lg">
           <Button 
-            className="btn-primary btn-lg text-lg"
+            className="btn-primary btn-lg"
             asChild
           >
             <Link href="/services">

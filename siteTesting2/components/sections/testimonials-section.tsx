@@ -121,9 +121,9 @@ export function TestimonialsSection() {
           ))}
         </div>
 
-        <div className="text-center element-spacing-md">
+        <div className="text-center element-spacing-lg">
           <Button 
-            className="btn-secondary btn-lg text-lg"
+            className="btn-secondary btn-lg"
             asChild
           >
             <Link href="/testimonials">

@@ -16,7 +16,7 @@ export function CtaSection() {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto text-spacing">
-          <div className="inline-flex items-center px-4 py-2 bg-surfe-white/20 text-surfe-white rounded-full text-sm font-semibold mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-surfe-white/20 text-surfe-white rounded-full text-sm font-semibold element-spacing-sm">
             <Sparkles className="h-4 w-4 mr-2" />
             Ready to Transform Your Data?
           </div>
@@ -31,20 +31,20 @@ export function CtaSection() {
             Get started with a free consultation and see the difference we can make.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-md">
-            <Button 
-              className="btn-secondary btn-lg text-lg bg-white text-surfe-primary hover:bg-gray-100"
-              asChild
-            >
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-lg">
+            <Button
+                    className="btn-light btn-lg"
+                    asChild
+                  >
               <Link href="/contact">
                 Get Started Free
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Link>
             </Button>
-            <Button 
-              className="btn-secondary btn-lg text-lg border-white text-white hover:bg-white hover:text-surfe-primary"
-              asChild
-            >
+            <Button
+                    className="btn-secondary btn-lg"
+                    asChild
+                  >
               <Link href="/services">
                 View Services
               </Link>

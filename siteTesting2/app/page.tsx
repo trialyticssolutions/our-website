@@ -1,5 +1,6 @@
 import { HeroSection } from '@/components/sections/hero-section'
 import { ServicesOverview } from '@/components/sections/services-overview'
+import { TrustIndicators } from '@/components/sections/trust-indicators'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { CtaSection } from '@/components/sections/cta-section'
 import { MainLayout } from '@/components/layout/main-layout'
@@ -30,6 +31,7 @@ export default function HomePage() {
     <MainLayout>
       <HeroSection />
       <ServicesOverview />
+      <TrustIndicators />
       <TestimonialsSection />
       <CtaSection />
     </MainLayout>

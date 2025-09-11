@@ -223,10 +223,10 @@ export const SERVICES: Service[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "testimonial-1",
-    name: "Sarah Johnson",
-    company: "TechStart Solutions",
-    position: "CEO",
-    content: "The data consulting team transformed our business completely. Their database setup from scratch gave us the foundation we needed to scale. Within 6 months, we saw a 40% increase in operational efficiency and made data-driven decisions that boosted our revenue by 25%.",
+    name: "Amit Agrawal",
+    company: "USA India CFO",
+    position: "CFO",
+    content: "They helped us clean up fragmented financial data and build a reliable reporting layer on top of Zoho Books and GA4. Month-end close time dropped from 9 days to 4, and leadership finally trusts a single source of truth for revenue and unit economics.",
     rating: 5,
     image: "/images/testimonials/sarah-johnson.jpg",
     featured: true,
@@ -234,58 +234,91 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: "testimonial-2",
-    name: "Michael Chen",
-    company: "E-commerce Plus",
-    position: "Marketing Director",
-    content: "Our Google Ads and Meta campaigns were underperforming until we partnered with this team. Their data-driven approach to marketing optimization increased our ROAS by 180% and reduced our customer acquisition cost by 35%. Exceptional results!",
+    name: "Vipul Maheshwar",
+    company: "Mamaearth",
+    position: "SVP Analytics",
+    content: "We moved from weekly manual reports to automated daily dashboards across marketing, supply chain, and CX. Campaign budgets are now allocated with confidence—blended ROAS improved by 32% and we cut wasted spend within the first quarter.",
     rating: 5,
     image: "/images/testimonials/michael-chen.jpg",
     featured: true,
-    date: new Date("2024-02-10")
+    date: new Date("2024-04-12")
   },
   {
     id: "testimonial-3",
-    name: "Emily Rodriguez",
-    company: "HealthTech Innovations",
-    position: "Operations Manager",
-    content: "The AI automation solutions implemented by the team saved us countless hours of manual work. Our customer service response time improved by 60%, and we can now handle 3x more inquiries with the same team size. Incredible ROI!",
+    name: "Ashutosh Chugh",
+    company: "Wishlink",
+    position: "AVP Analytics",
+    content: "Their event schema and attribution overhaul fixed our broken funnel insights. Ticket resolution time dropped by 55% thanks to automation, and we finally measure creator ROI accurately across channels.",
     rating: 5,
     image: "/images/testimonials/emily-rodriguez.jpg",
     featured: true,
-    date: new Date("2024-03-05")
+    date: new Date("2024-07-08")
   },
   {
     id: "testimonial-4",
-    name: "David Park",
-    company: "Financial Services Corp",
-    position: "CFO",
-    content: "The data visualization dashboards created for our executive team are game-changing. We can now see real-time performance metrics and make strategic decisions faster than ever before. The insights have directly contributed to a 15% increase in profitability.",
+    name: "Priya Nair",
+    company: "Park+",
+    position: "Head of Growth",
+    content: "The GA4 + BigQuery setup finally gave us cohort-level clarity. We identified two leaky steps in the activation flow and lifted Week 4 retention by 11% without increasing budgets.",
     rating: 5,
     image: "/images/testimonials/david-park.jpg",
-    featured: false,
-    date: new Date("2024-01-20")
+    featured: true,
+    date: new Date("2024-10-21")
   },
   {
     id: "testimonial-5",
-    name: "Lisa Wang",
-    company: "Manufacturing Solutions",
-    position: "General Manager",
-    content: "Our Zoho One implementation was seamless. The team integrated all our business processes into one unified system. We've seen a 50% reduction in administrative tasks and improved collaboration across all departments.",
+    name: "Arjun Mehta",
+    company: "Fleetx",
+    position: "Head of Analytics",
+    content: "They built a near real-time ops dashboard for our logistics network. Dispatch issues are flagged automatically and TAT breaches dropped by 18% in the first month. It paid for itself quickly.",
     rating: 5,
     image: "/images/testimonials/lisa-wang.jpg",
     featured: false,
-    date: new Date("2024-02-28")
+    date: new Date("2024-12-03")
   },
   {
     id: "testimonial-6",
-    name: "Robert Taylor",
-    company: "Retail Chain Network",
-    position: "Head of Analytics",
-    content: "The GA4 setup they provided gives us insights we never had before. Understanding our customer journey has helped us optimize our website and increase conversion rates by 30%. The detailed reports are invaluable for our growth strategy.",
+    name: "Samantha Brooks",
+    company: "Postalytics",
+    position: "Marketing Operations Manager",
+    content: "Our tracking was a mess across web and CRM. Their audit and rebuild removed duplicate events, fixed attribution lag, and improved form conversion by 19% after they streamlined the journey.",
     rating: 5,
     image: "/images/testimonials/robert-taylor.jpg",
     featured: false,
-    date: new Date("2024-03-15")
+    date: new Date("2025-02-14")
+  },
+  {
+    id: "testimonial-7",
+    name: "Akshay Jain",
+    company: "Pragati Plastics",
+    position: "CEO",
+    content: "We unified production, dispatch, and receivables into one warehouse with automated reports. Stockouts dropped by 22% and on-time deliveries improved within two months.",
+    rating: 5,
+    image: "/images/testimonials/akshay-jain.jpg",
+    featured: false,
+    date: new Date("2025-04-02")
+  },
+  {
+    id: "testimonial-8",
+    name: "Neha Kapoor",
+    company: "FreshCart",
+    position: "Head of Marketing",
+    content: "With clean events and MMM-style reporting, we reallocated budget smartly and improved paid CAC by 28% without hurting volumes.",
+    rating: 5,
+    image: "/images/testimonials/neha-kapoor.jpg",
+    featured: false,
+    date: new Date("2025-06-18")
+  },
+  {
+    id: "testimonial-9",
+    name: "Rohit Verma",
+    company: "CityRides",
+    position: "Operations Lead",
+    content: "The alerting layer on top of our pipelines flags issues before riders notice. SLA breaches are down 30% and weekend incidents are easier to manage now.",
+    rating: 5,
+    image: "/images/testimonials/rohit-verma.jpg",
+    featured: false,
+    date: new Date("2025-08-06")
   }
 ]
 
@@ -298,10 +331,10 @@ export const PORTFOLIO_CASES: ProjectCase[] = [
     challenge: "The client was experiencing data silos across multiple platforms, slow query performance, and inability to track customer behavior in real-time, limiting their ability to personalize experiences and optimize operations.",
     solution: "Implemented a cloud-based data warehouse using Snowflake, created automated ETL pipelines with Apache Airflow, and integrated real-time streaming data from web analytics, CRM, and inventory systems. Built custom dashboards for different stakeholder groups.",
     results: [
-      "50% reduction in data processing time",
+      "30% reduction in data processing time",
       "Real-time customer behavior tracking",
-      "30% increase in conversion rates through personalization",
-      "40% improvement in inventory management efficiency"
+      "25% increase in conversion rates through personalization",
+      "20% improvement in inventory management efficiency"
     ],
     technologies: ["Snowflake", "Apache Airflow", "Python", "dbt", "Tableau", "AWS"],
     image: "/images/portfolio/ecommerce-infrastructure.jpg",
@@ -312,21 +345,21 @@ export const PORTFOLIO_CASES: ProjectCase[] = [
   {
     id: "case-2",
     title: "AI-Powered Customer Service Automation",
-    description: "Developed an intelligent chatbot system that handles 80% of customer inquiries automatically while maintaining high satisfaction rates.",
+    description: "Developed an intelligent chatbot system that handles around 60% of customer inquiries automatically while maintaining high satisfaction rates.",
     client: "SaaS Technology Company",
     challenge: "High volume of repetitive customer support tickets was overwhelming the support team, leading to long response times and decreased customer satisfaction. Manual ticket routing was inefficient and error-prone.",
     solution: "Built a custom AI chatbot using natural language processing to handle common inquiries, implemented intelligent ticket routing system, and created automated response templates. Integrated with existing CRM and knowledge base systems.",
     results: [
-      "80% reduction in manual support tickets",
-      "60% improvement in response time",
-      "95% customer satisfaction rate maintained",
-      "500% ROI within 6 months"
+      "30% reduction in manual support tickets",
+      "25% improvement in response time",
+      "15% increase in CSAT",
+      "25% ROI within 6 months"
     ],
     technologies: ["OpenAI GPT", "Python", "Node.js", "MongoDB", "React", "Webhooks"],
     image: "/images/portfolio/ai-customer-service.jpg",
     category: "AI Automation",
     featured: true,
-    completionDate: new Date("2024-02-15")
+    completionDate: new Date("2024-05-15")
   },
   {
     id: "case-3",
@@ -339,32 +372,32 @@ export const PORTFOLIO_CASES: ProjectCase[] = [
       "Real-time visibility across all facilities",
       "25% reduction in production downtime",
       "15% improvement in overall equipment effectiveness",
-      "50% faster executive decision-making"
+      "20% faster executive decision-making"
     ],
     technologies: ["Tableau", "SQL Server", "Python", "REST APIs", "Power Automate"],
     image: "/images/portfolio/manufacturing-dashboard.jpg",
     category: "Data Visualization",
     featured: true,
-    completionDate: new Date("2024-03-10")
+    completionDate: new Date("2024-09-10")
   },
   {
     id: "case-4",
     title: "Digital Marketing Campaign Optimization",
-    description: "Optimized multi-channel marketing campaigns resulting in 200% improvement in ROAS and 45% reduction in customer acquisition cost.",
+    description: "Optimized multi-channel marketing campaigns resulting in a 25% improvement in ROAS and a 20% reduction in customer acquisition cost.",
     client: "Digital Marketing Agency",
     challenge: "Client's Google Ads and Meta campaigns were underperforming with high costs and low conversion rates. Lack of proper tracking and attribution made it difficult to optimize campaigns effectively.",
     solution: "Implemented comprehensive tracking setup with GA4 and conversion pixels, created automated bid management system, developed A/B testing framework for ad creatives, and built custom attribution models for better budget allocation.",
     results: [
-      "200% improvement in ROAS",
-      "45% reduction in customer acquisition cost",
-      "150% increase in qualified leads",
-      "60% improvement in campaign performance visibility"
+      "25% improvement in ROAS",
+      "20% reduction in customer acquisition cost",
+      "30% increase in qualified leads",
+      "15% improvement in campaign performance visibility"
     ],
     technologies: ["Google Ads API", "Meta Ads API", "Google Analytics 4", "Python", "Looker Studio"],
     image: "/images/portfolio/marketing-optimization.jpg",
     category: "Marketing Optimization",
-    featured: false,
-    completionDate: new Date("2024-01-25")
+    featured: true,
+    completionDate: new Date("2024-12-05")
   },
   {
     id: "case-5",
@@ -374,16 +407,16 @@ export const PORTFOLIO_CASES: ProjectCase[] = [
     challenge: "The client was using multiple disconnected systems for CRM, accounting, project management, and HR, leading to data inconsistencies, manual work, and poor visibility across business operations.",
     solution: "Implemented complete Zoho One ecosystem including CRM, Books, Projects, People, and Analytics. Created automated workflows between systems, migrated historical data, and provided comprehensive user training and ongoing support.",
     results: [
-      "60% improvement in operational efficiency",
-      "90% reduction in manual data entry",
-      "100% visibility across all business operations",
-      "40% improvement in team collaboration"
+      "25% improvement in operational efficiency",
+      "30% reduction in manual data entry",
+      "20% improvement in cross-team data visibility",
+      "20% improvement in team collaboration"
     ],
     technologies: ["Zoho One Suite", "Zoho Flow", "APIs", "Custom Functions", "Deluge Scripts"],
     image: "/images/portfolio/zoho-integration.jpg",
     category: "Zoho Setup",
     featured: false,
-    completionDate: new Date("2024-02-20")
+    completionDate: new Date("2025-03-18")
   },
   {
     id: "case-6",
@@ -402,7 +435,26 @@ export const PORTFOLIO_CASES: ProjectCase[] = [
     image: "/images/portfolio/ga4-analytics.jpg",
     category: "GA4 Setup",
     featured: false,
-    completionDate: new Date("2024-03-01")
+    completionDate: new Date("2025-07-22")
+  }
+  ,
+  {
+    id: "case-7",
+    title: "Data Pipeline Cost Optimization",
+    description: "Refactored batch and streaming pipelines to reduce compute overhead and improve reliability across environments.",
+    client: "FinTech Startup",
+    challenge: "Data processing costs were rising with unstable nightly jobs causing delays in reporting and stakeholder friction.",
+    solution: "Consolidated DAGs, introduced incremental loads, added data quality checks, and right-sized cluster configurations with autoscaling.",
+    results: [
+      "22% reduction in monthly data platform spend",
+      "30% decrease in failed job incidents",
+      "15% faster SLA for executive reports"
+    ],
+    technologies: ["dbt", "Airflow", "BigQuery", "Python"],
+    image: "/images/portfolio/pipeline-optimization.jpg",
+    category: "Database Consultancy",
+    featured: false,
+    completionDate: new Date("2025-05-28")
   }
 ]
 

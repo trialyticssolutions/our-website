@@ -15,185 +15,35 @@ const CLIENTS = [
 ]
 
 const ACHIEVEMENTS = [
-  { value: '500+', label: 'Projects Completed', icon: CheckCircle },
+  { value: '50+', label: 'Projects Completed', icon: CheckCircle },
   { value: '98%', label: 'Client Satisfaction', icon: Star },
   { value: '50+', label: 'Team Members', icon: Users },
   { value: '24/7', label: 'Support Available', icon: Award },
 ]
 
-function ClientCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(1) // Start at 1 for infinite scroll
-  const [itemsPerView, setItemsPerView] = useState(4) // Default fallback for SSR
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const totalSlides = Math.ceil(CLIENTS.length / itemsPerView)
-  
-  // Responsive items per view based on screen size
-  const getItemsPerView = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth >= 1536) return 8 // 2xl screens
-      if (window.innerWidth >= 1280) return 6 // xl screens  
-      if (window.innerWidth >= 1024) return 5 // lg screens
-      if (window.innerWidth >= 768) return 4  // md screens
-      if (window.innerWidth >= 640) return 3  // sm screens
-    }
-    return 2 // xs screens
-  }
+// function ClientLogosStatic() {
+//   const logos = [
+//     { name: 'L&T', src: '/L&T.png' },
+//     { name: 'OYO', src: '/oyo.png' },
+//     { name: 'Mamaearth', src: '/mamaearth.png' },
+//   ]
 
-  useEffect(() => {
-    // Set initial items per view after component mounts
-    setItemsPerView(getItemsPerView())
-    
-    const handleResize = () => {
-      setItemsPerView(getItemsPerView())
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  // Handle infinite scroll transitions
-  const handleTransitionEnd = () => {
-    setIsTransitioning(false)
-    if (currentIndex === 0) {
-      setCurrentIndex(totalSlides)
-    } else if (currentIndex === totalSlides + 1) {
-      setCurrentIndex(1)
-    }
-  }
-
-  const goToSlide = (index: number) => {
-    if (isTransitioning) return
-    setIsTransitioning(true)
-    setCurrentIndex(index)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isTransitioning) {
-        goToSlide(currentIndex + 1)
-      }
-    }, 6000) // Slower auto-scroll: 6 seconds instead of 4
-
-    return () => clearInterval(interval)
-  }, [currentIndex, isTransitioning, totalSlides])
-
-  return (
-    <div className="mt-16">
-      <h3 className="text-2xl font-semibold text-white mb-12 text-center">Trusted by Industry Leaders</h3>
-      
-      <div className="relative py-8">
-        {/* Client logos */}
-        <div className="overflow-hidden">
-          <div 
-            className={`flex transition-transform duration-1000 ease-in-out ${
-              !isTransitioning ? 'transition-none' : ''
-            }`}
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            onTransitionEnd={handleTransitionEnd}
-          >
-            {/* Create slides with duplicates for infinite scroll */}
-            {[
-              // Last slide (for seamless transition from first to last)
-              ...Array.from({ length: 1 }).map((_, slideIndex) => {
-                const actualSlideIndex = totalSlides - 1
-                const startIdx = actualSlideIndex * itemsPerView
-                const endIdx = Math.min(startIdx + itemsPerView, CLIENTS.length)
-                const slideClients = CLIENTS.slice(startIdx, endIdx)
-                
-                return (
-                  <div key={`duplicate-last-${slideIndex}`} className="w-full flex-shrink-0">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6 px-4 py-4 justify-items-center">
-                      {slideClients.map((client) => (
-                        <div 
-                          key={`${client.name}-duplicate-last`}
-                          className="group flex flex-col items-center space-y-3 opacity-70 hover:opacity-100 transition-all duration-300"
-                        >
-                          <div className={`w-16 h-16 bg-gradient-to-r ${client.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            <span className="text-white font-bold text-lg">{client.logo}</span>
-                          </div>
-                          <span className="text-gray-400 text-sm font-medium group-hover:text-white transition-colors duration-300">{client.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )
-              }),
-              // Original slides
-              ...Array.from({ length: totalSlides }).map((_, slideIndex) => {
-                const startIdx = slideIndex * itemsPerView
-                const endIdx = Math.min(startIdx + itemsPerView, CLIENTS.length)
-                const slideClients = CLIENTS.slice(startIdx, endIdx)
-                
-                return (
-                  <div key={`original-${slideIndex}`} className="w-full flex-shrink-0">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6 px-4 py-4 justify-items-center">
-                      {slideClients.map((client) => (
-                        <div 
-                          key={`${client.name}-original`}
-                          className="group flex flex-col items-center space-y-3 opacity-70 hover:opacity-100 transition-all duration-300"
-                        >
-                          <div className={`w-16 h-16 bg-gradient-to-r ${client.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            <span className="text-white font-bold text-lg">{client.logo}</span>
-                          </div>
-                          <span className="text-gray-400 text-sm font-medium group-hover:text-white transition-colors duration-300">{client.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )
-              }),
-              // First slide (for seamless transition from last to first)
-              ...Array.from({ length: 1 }).map((_, slideIndex) => {
-                const actualSlideIndex = 0
-                const startIdx = actualSlideIndex * itemsPerView
-                const endIdx = Math.min(startIdx + itemsPerView, CLIENTS.length)
-                const slideClients = CLIENTS.slice(startIdx, endIdx)
-                
-                return (
-                  <div key={`duplicate-first-${slideIndex}`} className="w-full flex-shrink-0">
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-6 px-4 py-4 justify-items-center">
-                      {slideClients.map((client) => (
-                        <div 
-                          key={`${client.name}-duplicate-first`}
-                          className="group flex flex-col items-center space-y-3 opacity-70 hover:opacity-100 transition-all duration-300"
-                        >
-                          <div className={`w-16 h-16 bg-gradient-to-r ${client.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                            <span className="text-white font-bold text-lg">{client.logo}</span>
-                          </div>
-                          <span className="text-gray-400 text-sm font-medium group-hover:text-white transition-colors duration-300">{client.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )
-              })
-            ]}
-          </div>
-        </div>
-        
-        {/* Carousel indicators - only show if we have multiple slides */}
-        {totalSlides > 1 && (
-          <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: totalSlides }).map((_, index) => {
-              const actualIndex = index + 1 // Adjust for infinite scroll offset
-              return (
-                <button
-                  key={index}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === actualIndex 
-                      ? 'bg-blue-500 w-8' 
-                      : 'bg-gray-600 w-2 hover:bg-gray-500'
-                  }`}
-                  onClick={() => goToSlide(actualIndex)}
-                />
-              )
-            })}
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
+//   return (
+//     <div className="mt-16">
+//       <h3 className="text-2xl font-semibold text-white mb-12 text-center">Trusted by Industry Leaders</h3>
+//       <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 px-4">
+//         {logos.map((logo) => (
+//           <div key={logo.name} className="card-surfe flex flex-col items-center justify-center p-6 text-center">
+//             <div className="w-40 h-40 rounded-2xl shadow-lg flex items-center justify-center bg-white/10 p-6">
+//               <img src={logo.src} alt={logo.name} className="w-full h-full object-contain" />
+//             </div>
+//             <span className="mt-6 text-gray-300 text-base font-medium">{logo.name}</span>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
 
 export function TrustIndicators() {
   return (
@@ -217,7 +67,7 @@ export function TrustIndicators() {
           {[
             {
               icon: Users,
-              title: '500+',
+              title: '50+',
               subtitle: 'Projects Delivered',
               description: 'Successfully completed projects across various industries',
               color: 'from-blue-500 to-cyan-500'
@@ -257,8 +107,8 @@ export function TrustIndicators() {
           ))}
         </div>
 
-        {/* Client logos carousel */}
-        <ClientCarousel />
+        {/* Client logos - static cards */}
+        {/* <ClientLogosStatic /> */}
       </div>
     </section>
   )

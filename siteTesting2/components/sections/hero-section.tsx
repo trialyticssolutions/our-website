@@ -76,7 +76,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center space-x-2 text-orange-custom">
               <Users className="h-5 w-5 text-purple-500" />
-              <span className="text-sm font-medium">500+ Projects Delivered</span>
+              <span className="text-sm font-medium">50+ Projects Delivered</span>
             </div>
           </div>
         </div>

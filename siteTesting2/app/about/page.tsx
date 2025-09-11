@@ -29,16 +29,16 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <MainLayout>
-      <div className="section-padding bg-white">
-        <div className="container mx-auto container-padding">
+      <div className="section-spacing bg-gradient-to-br from-gray-50 via-white to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              About Our Agency
+          <div className="text-center element-spacing-lg">
+            <h1 className="text-4xl md:text-5xl font-bold text-surfe-primary element-spacing-sm leading-tight">
+              About Our
+              <span className="block text-orange-custom">Agency</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're passionate about helping businesses transform their data into 
-              competitive advantages and sustainable growth.
+            <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
+              We help startups and mid-size teams turn raw data into reliable, decision-ready insights—without heavy overhead.
             </p>
           </div>
 
@@ -46,26 +46,20 @@ export default function AboutPage() {
           <div className="mb-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-                <div className="space-y-4 text-gray-700 leading-relaxed">
+                <h2 className="text-3xl font-bold text-surfe-primary mb-6">Our Story</h2>
+                <div className="space-y-4 text-surfe-text-secondary leading-relaxed">
                   <p>
-                    Founded in 2019, our data consulting agency emerged from a simple observation: 
-                    most businesses were sitting on goldmines of data but lacked the expertise 
-                    to extract meaningful value from it.
+                    Founded in 2023, we started with a simple observation: most businesses were sitting on a goldmine of data but lacked the foundations and focus to turn it into daily, measurable impact.
                   </p>
                   <p>
-                    Our founders, coming from diverse backgrounds in data science, engineering, 
-                    and business strategy, recognized the gap between raw data and actionable 
-                    insights. We set out to bridge that gap for businesses of all sizes.
+                    Coming from data engineering, analytics, and growth backgrounds, we built a hands-on practice focused on strong data foundations, clear tracking, and pragmatic automation—so teams can trust their numbers and move faster.
                   </p>
-                  <p>
-                    Today, we've helped over 50 businesses transform their data infrastructure, 
-                    implement AI-driven solutions, and achieve an average ROI improvement of 150%. 
-                    Our journey continues as we expand our services and embrace new technologies.
+                  <p className="text-orange-custom">
+                    Since then, we've helped 50+ companies establish modern data stacks, automate reporting, and ship analytics that actually get used—driving an average 30% improvement in marketing ROI and efficiency across teams.
                   </p>
                 </div>
                 <div className="mt-6">
-                  <Button asChild>
+                  <Button asChild className="btn-primary rounded-full">
                     <Link href="/contact">
                       Start Your Journey
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -73,23 +67,23 @@ export default function AboutPage() {
                   </Button>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+              <div className="card-surfe rounded-2xl p-8">
                 <div className="grid grid-cols-2 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-2">2019</div>
-                    <div className="text-sm text-gray-600">Founded</div>
+                    <div className="text-3xl font-bold text-orange-custom mb-2">2023</div>
+                    <div className="text-sm text-surfe-text-secondary">Founded</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                    <div className="text-sm text-gray-600">Clients Served</div>
+                    <div className="text-3xl font-bold text-surfe-primary mb-2">50+</div>
+                    <div className="text-sm text-surfe-text-secondary">Clients Served</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-2">100+</div>
-                    <div className="text-sm text-gray-600">Projects Completed</div>
+                    <div className="text-3xl font-bold text-surfe-primary mb-2">100+</div>
+                    <div className="text-sm text-surfe-text-secondary">Projects Completed</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-2">150%</div>
-                    <div className="text-sm text-gray-600">Avg ROI Improvement</div>
+                    <div className="text-3xl font-bold text-orange-custom mb-2">30%</div>
+                    <div className="text-sm text-surfe-text-secondary">Avg ROI Improvement</div>
                   </div>
                 </div>
               </div>
@@ -99,143 +93,88 @@ export default function AboutPage() {
           {/* Mission, Vision, Values */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Our Mission, Vision & Values
+              <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-4">
+                Our Mission,
+                <span className="block text-orange-custom">Vision & Values</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-surfe-text-secondary max-w-2xl mx-auto">
                 The principles that guide our work and define our commitment to our clients
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="text-center">
+              <Card className="text-center card-surfe">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Target className="h-8 w-8 text-blue-600" />
+                  <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Target className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle>Our Mission</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    To democratize data science and make advanced analytics accessible 
-                    to businesses of all sizes, empowering them to make data-driven 
-                    decisions that drive growth and innovation.
+                  <p className="text-surfe-text-secondary">
+                    Deliver reliable data foundations and pragmatic automation so teams can make confident, fast decisions that drive growth.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center card-surfe">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Eye className="h-8 w-8 text-purple-600" />
+                  <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Eye className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle>Our Vision</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    To be the leading data consulting partner that transforms how 
-                    businesses understand and utilize their data, creating a future 
-                    where every decision is informed by insights.
+                  <p className="text-surfe-text-secondary">
+                    A world where every growing business trusts its numbers and can explain performance in minutes, not days.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
+              <Card className="text-center card-surfe">
                 <CardHeader>
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Heart className="h-8 w-8 text-green-600" />
+                  <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Heart className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle>Our Values</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 text-sm text-gray-600">
-                    <div>• Client-Centricity</div>
-                    <div>• Innovation & Excellence</div>
-                    <div>• Transparency & Integrity</div>
-                    <div>• Continuous Learning</div>
-                    <div>• Collaborative Partnership</div>
+                  <div className="space-y-2 text-surfe-text-secondary leading-relaxed">
+                    <div> Client-Centricity</div>
+                    <div> Innovation & Excellence</div>
+                    <div> Transparency & Integrity</div>
+
                   </div>
                 </CardContent>
               </Card>
             </div>
           </div>
 
-          {/* Team Section */}
+          {/* Team Section - commented out as requested */}
+          {/**
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Meet Our Expert Team
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Our diverse team of data scientists, engineers, and strategists brings 
-                decades of combined experience to every project.
-              </p>
+              <h2 className="text-3xl font-bold text-surfe-primary mb-4">Meet Our Expert Team</h2>
+              <p className="text-surfe-text-secondary max-w-2xl mx-auto">Our diverse team of data scientists, engineers, and strategists brings decades of combined experience to every project.</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {TEAM_MEMBERS.map((member) => (
-                <Card key={member.id} className="text-center card-hover">
-                  <CardHeader>
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-gray-700">
-                        {member.name.split(' ').map(n => n[0]).join('')}
-                      </span>
-                    </div>
-                    <CardTitle className="text-lg">{member.name}</CardTitle>
-                    <CardDescription>{member.position}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                      {member.bio}
-                    </p>
-                    
-                    <div className="mb-4">
-                      <div className="flex flex-wrap gap-1 justify-center">
-                        {member.expertise.slice(0, 2).map((skill, idx) => (
-                          <Badge key={idx} variant="secondary" className="text-xs">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex justify-center space-x-3">
-                      {member.linkedIn && (
-                        <a
-                          href={member.linkedIn}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-600 transition-colors"
-                        >
-                          <Linkedin className="h-4 w-4" />
-                        </a>
-                      )}
-                      {member.twitter && (
-                        <a
-                          href={member.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-400 transition-colors"
-                        >
-                          <Twitter className="h-4 w-4" />
-                        </a>
-                      )}
-                    </div>
-                  </CardContent>
+                <Card key={member.id} className="text-center card-surfe">
+                  ...
                 </Card>
               ))}
             </div>
           </div>
+          **/}
 
           {/* Why Choose Us */}
           <div className="mb-20">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Why Choose Us
+              <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary mb-4">
+                Why
+                <span className="block text-orange-custom">Choose Us</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                What sets us apart in the data consulting landscape
-              </p>
+              <p className="text-surfe-text-secondary max-w-2xl mx-auto">What sets us apart in the data consulting landscape</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -243,42 +182,42 @@ export default function AboutPage() {
                 {
                   icon: Award,
                   title: "Proven Expertise",
-                  description: "Our team brings decades of combined experience from top-tier companies and successful projects across various industries."
+                  description: "Our team brings hands-on experience building modern data stacks and analytics for fast-growing companies."
                 },
                 {
                   icon: Users,
                   title: "Client-Focused Approach",
-                  description: "We prioritize understanding your unique business needs and tailor our solutions to deliver maximum value and ROI."
+                  description: "We start from your goals and build only what moves the needle—measured and reviewed together."
                 },
                 {
                   icon: Target,
                   title: "End-to-End Solutions",
-                  description: "From initial strategy to implementation and ongoing support, we provide comprehensive data solutions that scale with your business."
+                  description: "From tracking and warehousing to dashboards and automation, we cover the full data lifecycle."
                 },
                 {
                   icon: Heart,
                   title: "Collaborative Partnership",
-                  description: "We work as an extension of your team, ensuring knowledge transfer and empowering your internal capabilities."
+                  description: "We work as an extension of your team, with clear documentation and enablement so you stay self-sufficient."
                 },
                 {
                   icon: Eye,
                   title: "Cutting-Edge Technology",
-                  description: "We stay at the forefront of data science and AI technologies to provide you with the most advanced solutions available."
+                  description: "We pick proven tools first, adding AI where it makes sense for reliability and speed."
                 },
                 {
                   icon: Award,
                   title: "Measurable Results",
-                  description: "Our success is measured by your success. We focus on delivering tangible, quantifiable improvements to your business metrics."
+                  description: "We focus on tangible lifts—think 10–30% improvements in ROAS, conversion, or operational efficiency."
                 }
               ].map((item, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                    <item.icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  <h3 className="text-xl font-semibold text-white mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-surfe-text-secondary">
                     {item.description}
                   </p>
                 </div>

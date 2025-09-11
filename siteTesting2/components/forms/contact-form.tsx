@@ -211,12 +211,18 @@ export function ContactForm() {
           <div className="space-y-2">
             <Label htmlFor="subject">Subject *</Label>
             <Select onValueChange={(value) => setValue('subject', value)}>
-              <SelectTrigger className={errors.subject ? 'border-red-500' : ''}>
+              <SelectTrigger
+                className={`h-12 rounded-xl bg-gray-900 border border-gray-800 text-white focus:ring-2 focus:ring-purple-500 focus:ring-offset-0 ${errors.subject ? 'border-red-500' : ''}`}
+              >
                 <SelectValue placeholder="Please select a subject" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="!transition-none bg-gray-900 border border-gray-800 text-white rounded-xl shadow-lg p-1">
                 {CONTACT_SUBJECTS.map((subject) => (
-                  <SelectItem key={subject} value={subject}>
+                  <SelectItem
+                    key={subject}
+                    value={subject}
+                    className="rounded-lg px-3 py-2 focus:bg-purple-600/20 focus:text-white cursor-pointer"
+                  >
                     {subject}
                   </SelectItem>
                 ))}

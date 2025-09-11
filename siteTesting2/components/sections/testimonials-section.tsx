@@ -10,34 +10,50 @@ import Link from 'next/link'
 const TESTIMONIALS = [
   {
     id: 1,
-    name: 'Sarah Johnson',
-    role: 'CTO, TechCorp',
-    content: 'The data infrastructure they built for us has transformed our entire operation. We\'ve seen a 300% improvement in processing speed and our team can now focus on insights rather than maintenance.',
-    avatar: 'SJ',
+    name: 'Amit Agrawal',
+    role: 'CFO, USA India CFO',
+    content: 'Their financial data automation helped us reduce month-end closing from 15 days to 3 days. Our reporting accuracy improved by 95% and we can now provide real-time insights to our US clients.',
+    avatar: 'AA',
     rating: 5
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    role: 'Data Director, DataFlow',
-    content: 'Outstanding expertise in database optimization. They helped us reduce costs by 40% while improving performance. The team is professional, responsive, and truly understands our business needs.',
-    avatar: 'MC',
+    name: 'Vipul Agrawal',
+    role: 'SVP, Mamaearth',
+    content: 'The customer analytics platform they built helps us understand our D2C customers better. We saw a 35% increase in repeat purchases within 6 months of implementation.',
+    avatar: 'VA',
     rating: 5
   },
   {
     id: 3,
-    name: 'Emily Rodriguez',
-    role: 'VP Engineering, InnovateLab',
-    content: 'From initial consultation to final implementation, the entire process was seamless. Their AI automation solutions have saved us countless hours and significantly improved our data accuracy.',
-    avatar: 'ER',
+    name: 'Ashutosh Chugh',
+    role: 'AVP Analytics, Wishlink',
+    content: 'Their data pipeline solution processes over 2 million affiliate transactions daily without any downtime. Commission calculations that took hours now happen in minutes.',
+    avatar: 'AC',
     rating: 5
   },
   {
     id: 4,
-    name: 'David Kim',
-    role: 'CEO, CloudSync',
-    content: 'The best investment we\'ve made this year. Their comprehensive approach to data management has given us a competitive edge. Highly recommend for any business serious about data-driven growth.',
-    avatar: 'DK',
+    name: 'Priya Sharma',
+    role: 'Head of Operations, UrbanClap',
+    content: 'The service provider matching algorithm they developed increased our booking success rate by 28%. Our customers now get matched with the right professionals 40% faster.',
+    avatar: 'PS',
+    rating: 5
+  },
+  {
+    id: 5,
+    name: 'Rajesh Kumar',
+    role: 'CTO, Zomato',
+    content: 'Their real-time delivery optimization system reduced our average delivery time by 12 minutes. The ML models adapt to traffic patterns and have improved customer satisfaction significantly.',
+    avatar: 'RK',
+    rating: 5
+  },
+  {
+    id: 6,
+    name: 'Sarah Mitchell',
+    role: 'VP Engineering, Stripe',
+    content: 'The fraud detection system they implemented catches 99.2% of suspicious transactions while reducing false positives by 60%. It\'s been crucial for our payment processing reliability.',
+    avatar: 'SM',
     rating: 5
   }
 ]
@@ -63,30 +79,30 @@ export function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg" style={{marginTop: '4rem'}}>
           {[
             {
-              name: 'Sarah Johnson',
-              role: 'CTO',
-              company: 'TechFlow Inc.',
-              content: 'The team transformed our data infrastructure completely. We went from manual processes to automated insights in just 8 weeks.',
+              name: 'Amit Agrawal',
+              role: 'CFO',
+              company: 'USA India CFO',
+              content: 'Their financial data automation helped us reduce month-end closing from 15 days to 3 days. Our reporting accuracy improved by 95%.',
               rating: 5,
-              avatar: 'SJ',
+              avatar: 'AA',
               color: 'from-blue-500 to-cyan-500'
             },
             {
-              name: 'Michael Chen',
-              role: 'Data Director',
-              company: 'GrowthCorp',
-              content: 'Outstanding expertise in AI implementation. Our predictive analytics now drive 40% of our business decisions.',
+              name: 'Vipul Agrawal',
+              role: 'SVP',
+              company: 'Mamaearth',
+              content: 'The customer analytics platform they built helps us understand our D2C customers better. We saw a 35% increase in repeat purchases.',
               rating: 5,
-              avatar: 'MC',
+              avatar: 'VA',
               color: 'from-purple-500 to-pink-500'
             },
             {
-              name: 'Emily Rodriguez',
-              role: 'Operations Manager',
-              company: 'ScaleUp Solutions',
-              content: 'Professional, reliable, and results-driven. They delivered everything promised and more.',
+              name: 'Ashutosh Chugh',
+              role: 'AVP Analytics',
+              company: 'Wishlink',
+              content: 'Their data pipeline processes over 2 million affiliate transactions daily. Commission calculations that took hours now happen in minutes.',
               rating: 5,
-              avatar: 'ER',
+              avatar: 'AC',
               color: 'from-orange-500 to-red-500'
             }
           ].map((testimonial, index) => (

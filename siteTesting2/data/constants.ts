@@ -234,11 +234,11 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     id: "testimonial-2",
-    name: "Vipul Maheshwar",
+    name: "Vipul Maheshwari",
     company: "Mamaearth",
     position: "SVP Analytics",
     content: "We moved from weekly manual reports to automated daily dashboards across marketing, supply chain, and CX. Campaign budgets are now allocated with confidence—blended ROAS improved by 32% and we cut wasted spend within the first quarter.",
-    rating: 5,
+    rating: 4.5,
     image: "/images/testimonials/michael-chen.jpg",
     featured: true,
     date: new Date("2024-04-12")
@@ -526,7 +526,7 @@ export const HERO_STATS = [
 
 export const TRUST_INDICATORS = [
   { name: "TechCorp", logo: "/images/clients/techcorp.png" },
-  { name: "DataFlow", logo: "/images/clients/dataflow.png" },
+  { name: "AcubeInsights", logo: "/images/clients/dataflow.png" },
   { name: "CloudSystems", logo: "/images/clients/cloudsystems.png" },
   { name: "InnovateLabs", logo: "/images/clients/innovatelabs.png" },
   { name: "ScaleUp", logo: "/images/clients/scaleup.png" },

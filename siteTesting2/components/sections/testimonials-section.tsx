@@ -6,57 +6,7 @@ import { Button } from '@/components/ui/button'
 import { ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react'
 import { Star, CheckCircle, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-
-const TESTIMONIALS = [
-  {
-    id: 1,
-    name: 'Amit Agrawal',
-    role: 'CFO, USA India CFO',
-    content: 'Their financial data automation helped us reduce month-end closing from 15 days to 3 days. Our reporting accuracy improved by 95% and we can now provide real-time insights to our US clients.',
-    avatar: 'AA',
-    rating: 5
-  },
-  {
-    id: 2,
-    name: 'Vipul Agrawal',
-    role: 'SVP, Mamaearth',
-    content: 'The customer analytics platform they built helps us understand our D2C customers better. We saw a 35% increase in repeat purchases within 6 months of implementation.',
-    avatar: 'VA',
-    rating: 5
-  },
-  {
-    id: 3,
-    name: 'Ashutosh Chugh',
-    role: 'AVP Analytics, Wishlink',
-    content: 'Their data pipeline solution processes over 2 million affiliate transactions daily without any downtime. Commission calculations that took hours now happen in minutes.',
-    avatar: 'AC',
-    rating: 5
-  },
-  {
-    id: 4,
-    name: 'Priya Sharma',
-    role: 'Head of Operations, UrbanClap',
-    content: 'The service provider matching algorithm they developed increased our booking success rate by 28%. Our customers now get matched with the right professionals 40% faster.',
-    avatar: 'PS',
-    rating: 5
-  },
-  {
-    id: 5,
-    name: 'Rajesh Kumar',
-    role: 'CTO, Zomato',
-    content: 'Their real-time delivery optimization system reduced our average delivery time by 12 minutes. The ML models adapt to traffic patterns and have improved customer satisfaction significantly.',
-    avatar: 'RK',
-    rating: 5
-  },
-  {
-    id: 6,
-    name: 'Sarah Mitchell',
-    role: 'VP Engineering, Stripe',
-    content: 'The fraud detection system they implemented catches 99.2% of suspicious transactions while reducing false positives by 60%. It\'s been crucial for our payment processing reliability.',
-    avatar: 'SM',
-    rating: 5
-  }
-]
+import { TESTIMONIALS } from '@/data/constants'
 
 export function TestimonialsSection() {
   return (
@@ -77,48 +27,27 @@ export function TestimonialsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg" style={{marginTop: '4rem'}}>
-          {[
-            {
-              name: 'Amit Agrawal',
-              role: 'CFO',
-              company: 'USA India CFO',
-              content: 'Their financial data automation helped us reduce month-end closing from 15 days to 3 days. Our reporting accuracy improved by 95%.',
-              rating: 5,
-              avatar: 'AA',
-              color: 'from-blue-500 to-cyan-500'
-            },
-            {
-              name: 'Vipul Agrawal',
-              role: 'SVP',
-              company: 'Mamaearth',
-              content: 'The customer analytics platform they built helps us understand our D2C customers better. We saw a 35% increase in repeat purchases.',
-              rating: 5,
-              avatar: 'VA',
-              color: 'from-purple-500 to-pink-500'
-            },
-            {
-              name: 'Ashutosh Chugh',
-              role: 'AVP Analytics',
-              company: 'Wishlink',
-              content: 'Their data pipeline processes over 2 million affiliate transactions daily. Commission calculations that took hours now happen in minutes.',
-              rating: 5,
-              avatar: 'AC',
-              color: 'from-orange-500 to-red-500'
-            }
-          ].map((testimonial, index) => (
-            <div key={index} className="group card-surfe p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
+          {TESTIMONIALS.filter(testimonial => testimonial.featured).slice(0, 3).map((testimonial, index) => {
+            const colors = [
+              'from-blue-500 to-cyan-500',
+              'from-purple-500 to-pink-500', 
+              'from-orange-500 to-red-500'
+            ];
+            const avatar = testimonial.name.split(' ').map(n => n[0]).join('');
+            return (
+            <div key={testimonial.id} className="group card-surfe p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
               <div className="flex items-center mb-6">
-                <div className={`w-12 h-12 bg-gradient-to-r ${testimonial.color} rounded-xl flex items-center justify-center text-white font-semibold text-lg mr-4`}>
-                  {testimonial.avatar}
+                <div className={`w-12 h-12 bg-gradient-to-r ${colors[index]} rounded-xl flex items-center justify-center text-white font-semibold text-lg mr-4`}>
+                  {avatar}
                 </div>
                 <div>
                   <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">{testimonial.role} at {testimonial.company}</div>
+                  <div className="text-sm text-gray-400">{testimonial.position} at {testimonial.company}</div>
                 </div>
               </div>
               
               <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
+                {Array.from({ length: Math.floor(testimonial.rating) }).map((_, i) => (
                   <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                 ))}
               </div>
@@ -134,7 +63,8 @@ export function TestimonialsSection() {
                 <CheckCircle className="h-5 w-5 text-green-500" />
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
 
         <div className="text-center element-spacing-md">

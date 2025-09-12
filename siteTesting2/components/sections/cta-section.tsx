@@ -50,10 +50,6 @@ export function CtaSection() {
               </Link>
             </Button>
           </div>
-          
-          <p className="text-sm text-surfe-white/70 element-spacing-xs">
-            No credit card required • 30-day free trial • Cancel anytime
-          </p>
         </div>
       </div>
     </section>

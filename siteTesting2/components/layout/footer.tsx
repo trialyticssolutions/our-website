@@ -15,7 +15,7 @@ export function Footer() {
               <div className="flex items-center justify-center w-12 h-12 bg-surfe-white text-surfe-primary rounded-2xl shadow-md">
                 <Sparkles className="h-6 w-6" />
               </div>
-              <span className="text-2xl font-bold text-surfe-white">DataFlow</span>
+              <span className="text-2xl font-bold text-surfe-white">AcubeInsights</span>
             </div>
             <p className="text-surfe-white/80 text-base leading-relaxed">
               {SITE_CONFIG.description}

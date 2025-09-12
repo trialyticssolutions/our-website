@@ -57,7 +57,7 @@ export function Navigation() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm font-bold text-white font-inter">
-                  DataFlow
+                  AcubeInsights
                 </span>
                 <span className="text-[8px] text-gray-300 uppercase tracking-wider font-inter">
                   Data Solutions
@@ -118,7 +118,7 @@ export function Navigation() {
                     </div>
                     <div className="flex flex-col">
                       <span className="text-2xl font-bold text-white font-inter">
-                        DataFlow
+                        AcubeInsights
                       </span>
                       <span className="text-sm text-gray-300 uppercase tracking-wider font-inter">
                         Data Solutions

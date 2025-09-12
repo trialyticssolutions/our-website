@@ -268,7 +268,7 @@ The website will consist of the following primary pages, accessible via a top na
   * **HTTPS:** Ensure the entire website is served over HTTPS.  
 * **Error Handling:** Robust server-side error handling with appropriate HTTP status codes and informative error messages. Log errors for debugging.  
 * **Scalability:** The chosen backend (e.g., serverless functions) should be inherently scalable to handle varying loads.  
-* **Email Notification (Optional but Recommended for agency):** After successful Firestore storage, trigger an email notification to a predefined agency email address (e.g., info@youragency.com) containing the submitted form data.
+* **Email Notification (Optional but Recommended for agency):** After successful Firestore storage, trigger an email notification to a predefined agency email address (e.g., connect@acubeinsights.com) containing the submitted form data.
 
 ### **4.4. SEO Mastery (Critical for High Competition)**
 

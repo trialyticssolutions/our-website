@@ -12,6 +12,7 @@ export function HeroSection() {
         <div className="nugget-wireframe-sphere"></div>
         <div className="nugget-wireframe-sphere-small"></div>
         <div className="nugget-geometric-shapes"></div>
+        <div className="nugget-geometric-triangle"></div>
         <div className="nugget-glow-orb"></div>
         <div className="nugget-particles">
           <div className="nugget-particle"></div>

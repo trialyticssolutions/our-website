@@ -86,7 +86,7 @@ export function ContactForm() {
         subject: data.subject,
         message: data.message,
         submission_time: new Date().toLocaleString(),
-        to_email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'info@youragency.com'
+        to_email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'connect@acubeinsights.com'
       }
 
       // Send email using EmailJS
@@ -275,4 +275,4 @@ export function ContactForm() {
       </CardContent>
     </Card>
   )
-} 
+}

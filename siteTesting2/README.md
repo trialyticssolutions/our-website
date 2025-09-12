@@ -57,7 +57,7 @@ Edit `.env.local` with your actual values:
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-NEXT_PUBLIC_CONTACT_EMAIL=info@youragency.com
+NEXT_PUBLIC_CONTACT_EMAIL=connect@acubeinsights.com
 
 # reCAPTCHA Configuration (Optional)
 NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_site_key
@@ -282,4 +282,4 @@ Potential future features:
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and Tailwind CSS. 
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS.

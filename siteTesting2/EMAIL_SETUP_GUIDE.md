@@ -24,7 +24,7 @@ SMTP_SECURE=false
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_16_character_app_password
 SMTP_FROM=your_email@gmail.com
-CONTACT_EMAIL=info@youragency.com
+CONTACT_EMAIL=connect@acubeinsights.com
 ```
 
 ### 4. Test the Setup
@@ -148,4 +148,4 @@ All platforms support environment variables:
 If you want to switch to database storage later:
 1. Check `todo-firebase-setup.md` for Firebase configuration
 2. The email functionality will remain as backup notification system
-3. You can have both database storage AND email notifications 
+3. You can have both database storage AND email notifications

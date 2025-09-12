@@ -4,9 +4,9 @@ export const SITE_CONFIG: SiteConfig = {
   name: "Data Consulting Agency",
   description: "Transforming raw data into actionable insights and automated solutions for scalable growth",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com",
-  email: process.env.CONTACT_EMAIL || "info@youragency.com",
+  email: process.env.CONTACT_EMAIL || "connect@acubeinsights.com",
   phone: "+1 (555) 123-4567",
-  address: "123 Business Ave, Suite 100, City, State 12345",
+  address: "363 Sector 57, Gurugram, Haryana, India 122003",
   social: {
     linkedin: "https://linkedin.com/company/youragency",
     twitter: "https://twitter.com/youragency",
@@ -531,4 +531,4 @@ export const TRUST_INDICATORS = [
   { name: "InnovateLabs", logo: "/images/clients/innovatelabs.png" },
   { name: "ScaleUp", logo: "/images/clients/scaleup.png" },
   { name: "GrowthCo", logo: "/images/clients/growthco.png" }
-] 
+]

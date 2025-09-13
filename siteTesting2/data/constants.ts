@@ -5,7 +5,7 @@ export const SITE_CONFIG: SiteConfig = {
   description: "Transforming raw data into actionable insights and automated solutions for scalable growth",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com",
   email: process.env.CONTACT_EMAIL || "connect@acubeinsights.com",
-  phone: "+1 (555) 123-4567",
+  phone: "+91-8112217234",
   address: "363 Sector 57, Gurugram, Haryana, India 122003",
   social: {
     linkedin: "https://linkedin.com/company/youragency",
@@ -13,7 +13,7 @@ export const SITE_CONFIG: SiteConfig = {
     facebook: "https://facebook.com/youragency",
     instagram: "https://instagram.com/youragency"
   },
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "1234567890",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+918112217234",
   whatsappMessage: process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || "Hello! I'm interested in your data consulting services."
 }
 

@@ -1478,4 +1478,31 @@ h3 .text-orange-custom {
   .nav-link-active:hover {
     color: #8b5cf6 !important;
   }
+
+  /* WhatsApp Button Specific Styles - Override global button styles */
+  button.whatsapp-button,
+  .whatsapp-button.whatsapp-button {
+    background: #25D366 !important;
+    background-color: #25D366 !important;
+    border-color: #25D366 !important;
+    color: #ffffff !important;
+  }
+
+  button.whatsapp-button:hover,
+  .whatsapp-button.whatsapp-button:hover {
+    background: #128C7E !important;
+    background-color: #128C7E !important;
+    border-color: #128C7E !important;
+    color: #ffffff !important;
+    transform: none !important;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3) !important;
+  }
+
+  button.whatsapp-button:focus,
+  .whatsapp-button.whatsapp-button:focus {
+    background: #25D366 !important;
+    background-color: #25D366 !important;
+    border-color: #25D366 !important;
+    color: #ffffff !important;
+  }
 }

@@ -188,7 +188,7 @@ export function ContactForm() {
               <Input
                 id="phoneNumber"
                 type="tel"
-                placeholder="+1 (555) 123-4567"
+                placeholder="+91-8112217234"
                 {...register('phoneNumber')}
                 className={errors.phoneNumber ? 'border-red-500' : ''}
               />

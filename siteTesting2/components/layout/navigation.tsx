@@ -89,9 +89,11 @@ export function Navigation() {
             </div>
 
             {/* CTA Button */}
-            <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium px-4 py-1 rounded-full transition-all duration-300 hover:scale-105 font-inter text-sm min-h-0 h-8 shadow-md hover:shadow-lg">
-              Get Started
-            </Button>
+            <Link href="/contact">
+              <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-medium px-4 py-1 rounded-full transition-all duration-300 hover:scale-105 font-inter text-sm min-h-0 h-8 shadow-md hover:shadow-lg">
+                Get Started
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -143,9 +145,11 @@ export function Navigation() {
                         {item.label}
                       </Link>
                     ))}
-                    <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white w-full mt-6 rounded-full font-inter shadow-md hover:shadow-lg" onClick={closeSheet}>
-                      Get Started
-                    </Button>
+                    <Link href="/contact">
+                      <Button className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white w-full mt-6 rounded-full font-inter shadow-md hover:shadow-lg" onClick={closeSheet}>
+                        Get Started
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </SheetContent>

@@ -3,7 +3,7 @@ import { Service, ProjectCase, Testimonial, TeamMember, SiteConfig } from '@/typ
 export const SITE_CONFIG: SiteConfig = {
   name: "Data Consulting Agency",
   description: "Transforming raw data into actionable insights and automated solutions for scalable growth",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://acubeinsights.com",
   email: process.env.CONTACT_EMAIL || "connect@acubeinsights.com",
   phone: "+91-8112217234",
   address: "363 Sector 57, Gurugram, Haryana, India 122003",

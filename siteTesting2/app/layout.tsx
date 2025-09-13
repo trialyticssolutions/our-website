@@ -43,11 +43,11 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [
       {
-        url: '/images/og-image.svg',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: `${SITE_CONFIG.name} - Data Consulting Services`,
-        type: 'image/svg+xml',
+        alt: 'ACube Insights - Data Consulting & Analytics',
+        type: 'image/png',
       },
     ],
   },
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
     title: `${SITE_CONFIG.name} - Unlock Your Data's Full Potential`,
     description: SITE_CONFIG.description,
     creator: '@youragency',
-    images: ['/images/og-image.svg'],
+    images: ['/images/og-image.png'],
   },
   other: {
     'og:image:width': '1200',
     'og:image:height': '630',
-    'og:image:type': 'image/svg+xml',
+    'og:image:type': 'image/png',
     'og:site_name': SITE_CONFIG.name,
   },
   robots: {

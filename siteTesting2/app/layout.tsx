@@ -41,12 +41,28 @@ export const metadata: Metadata = {
     title: `${SITE_CONFIG.name} - Unlock Your Data's Full Potential`,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
+    images: [
+      {
+        url: '/images/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} - Data Consulting Services`,
+        type: 'image/svg+xml',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_CONFIG.name} - Unlock Your Data's Full Potential`,
     description: SITE_CONFIG.description,
     creator: '@youragency',
+    images: ['/images/og-image.svg'],
+  },
+  other: {
+    'og:image:width': '1200',
+    'og:image:height': '630',
+    'og:image:type': 'image/svg+xml',
+    'og:site_name': SITE_CONFIG.name,
   },
   robots: {
     index: true,

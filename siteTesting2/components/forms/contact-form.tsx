@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import ReCAPTCHA from 'react-google-recaptcha'
+
 import emailjs from '@emailjs/browser'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -31,7 +31,7 @@ type ContactFormFields = z.infer<typeof contactFormSchema>
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null)
+
   const { toast } = useToast()
 
   const {
@@ -53,19 +53,10 @@ export function ContactForm() {
     }
   })
 
-  const handleRecaptchaChange = (token: string | null) => {
-    setRecaptchaToken(token)
-  }
+
 
   const onSubmit = async (data: ContactFormFields) => {
-    if (!recaptchaToken && process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY) {
-      toast({
-        title: 'Error',
-        description: 'Please complete the reCAPTCHA verification',
-        variant: 'destructive'
-      })
-      return
-    }
+
 
     setIsSubmitting(true)
 
@@ -100,7 +91,7 @@ export function ContactForm() {
       if (result.status === 200) {
         setIsSubmitted(true)
         reset()
-        setRecaptchaToken(null)
+
         toast({
           title: 'Success!',
           description: 'Thank you for your message! We will get back to you shortly.',
@@ -247,15 +238,7 @@ export function ContactForm() {
             )}
           </div>
 
-          {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
-            <div className="flex justify-center">
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                onChange={handleRecaptchaChange}
-                onExpired={() => setRecaptchaToken(null)}
-              />
-            </div>
-          )}
+
 
           <Button
             type="submit"

@@ -98,7 +98,8 @@ dist
 
 # Gatsby files
 .cache/
-public
+# NOTE: this is a Next.js app — public/ is committed source (fonts, static
+# assets), NOT build output. Do not re-add `public` here.
 
 # Storybook build outputs
 .out

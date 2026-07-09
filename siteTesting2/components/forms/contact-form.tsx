@@ -203,16 +203,16 @@ export function ContactForm() {
             <Label htmlFor="subject">Subject *</Label>
             <Select onValueChange={(value) => setValue('subject', value)}>
               <SelectTrigger
-                className={`h-12 rounded-xl bg-gray-900 border border-gray-800 text-white focus:ring-2 focus:ring-purple-500 focus:ring-offset-0 ${errors.subject ? 'border-red-500' : ''}`}
+                className={`h-12 rounded-sm border border-line-light bg-bone text-char focus:ring-2 focus:ring-brass focus:ring-offset-0 ${errors.subject ? 'border-red-500' : ''}`}
               >
                 <SelectValue placeholder="Please select a subject" />
               </SelectTrigger>
-              <SelectContent className="!transition-none bg-gray-900 border border-gray-800 text-white rounded-xl shadow-lg p-1">
+              <SelectContent className="!transition-none rounded-sm border border-line-light bg-bone p-1 text-char shadow-lg">
                 {CONTACT_SUBJECTS.map((subject) => (
                   <SelectItem
                     key={subject}
                     value={subject}
-                    className="rounded-lg px-3 py-2 focus:bg-purple-600/20 focus:text-white cursor-pointer"
+                    className="cursor-pointer rounded-sm px-3 py-2 focus:bg-bone-2 focus:text-char"
                   >
                     {subject}
                   </SelectItem>
@@ -242,7 +242,7 @@ export function ContactForm() {
 
           <Button
             type="submit"
-            className="w-full"
+            className="btn-brass w-full"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

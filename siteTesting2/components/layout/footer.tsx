@@ -1,82 +1,66 @@
 import Link from 'next/link'
-import { Facebook, Twitter, Linkedin, Instagram, Sparkles, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
 import { SITE_CONFIG, NAVIGATION_ITEMS } from '@/data/constants'
+
+const SERVICE_LINKS = [
+  { label: 'Database Consultancy', href: '/services#database-consultancy' },
+  { label: 'Data Insights', href: '/services#data-insights' },
+  { label: 'AI Automation', href: '/services#ai-automation' },
+  { label: 'Data Visualization', href: '/services#data-visualization' },
+  { label: 'Marketing Optimization', href: '/services#marketing-optimization' },
+]
+
+const SOCIAL_LINKS = [
+  { label: 'LinkedIn', href: SITE_CONFIG.social.linkedin, Icon: Linkedin },
+  { label: 'Twitter', href: SITE_CONFIG.social.twitter, Icon: Twitter },
+  { label: 'Facebook', href: SITE_CONFIG.social.facebook, Icon: Facebook },
+  { label: 'Instagram', href: SITE_CONFIG.social.instagram, Icon: Instagram },
+]
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-surfe-primary text-surfe-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="flex items-center justify-center w-12 h-12 bg-surfe-white text-surfe-primary rounded-2xl shadow-md">
-                <Sparkles className="h-6 w-6" />
-              </div>
-              <span className="text-2xl font-bold text-surfe-white">AcubeInsights</span>
-            </div>
-            <p className="text-surfe-white/80 text-base leading-relaxed">
+    <footer className="border-t border-line-dark bg-char text-bone">
+      <div className="container mx-auto px-6 py-20 lg:px-8">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-12">
+          {/* Brand */}
+          <div className="lg:col-span-5">
+            <span className="flex items-center gap-2.5">
+              <span className="block h-3 w-3 bg-brass" aria-hidden="true" />
+              <span className="font-display text-xl font-semibold tracking-tight">
+                AcubeInsights
+              </span>
+            </span>
+            <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-ash">
               {SITE_CONFIG.description}
             </p>
-            <div className="flex space-x-4">
-              {SITE_CONFIG.social.linkedin && (
-                <Link
-                  href={SITE_CONFIG.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-surfe-white/10 hover:bg-surfe-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              )}
-              {SITE_CONFIG.social.twitter && (
-                <Link
-                  href={SITE_CONFIG.social.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-surfe-white/10 hover:bg-surfe-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </Link>
-              )}
-              {SITE_CONFIG.social.facebook && (
-                <Link
-                  href={SITE_CONFIG.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-surfe-white/10 hover:bg-surfe-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-5 w-5" />
-                </Link>
-              )}
-              {SITE_CONFIG.social.instagram && (
-                <Link
-                  href={SITE_CONFIG.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-surfe-white/10 hover:bg-surfe-white/20 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5" />
-                </Link>
-              )}
-            </div>
+            <ul className="mt-8 flex gap-3">
+              {SOCIAL_LINKS.filter((s) => s.href).map(({ label, href, Icon }) => (
+                <li key={label}>
+                  <Link
+                    href={href!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-10 w-10 items-center justify-center border border-line-dark text-ash transition-colors duration-300 hover:border-brass hover:text-brass"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Navigation */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-orange-custom">Navigation</h3>
-            <ul className="space-y-3">
+          <div className="lg:col-span-2">
+            <h3 className="mono-label text-brass">Navigation</h3>
+            <ul className="mt-6 space-y-3">
               {NAVIGATION_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-surfe-white/80 hover:text-surfe-white transition-colors text-base font-medium"
+                    className="filament inline-block text-[15px] text-ash transition-colors hover:text-bone"
                   >
                     {item.label}
                   </Link>
@@ -86,103 +70,50 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-orange-custom">Services</h3>
-            <ul className="space-y-3 text-base">
-              <li>
-                <Link
-                  href="/services#database-consultancy"
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
-                  Database Consultancy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#data-insights"
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
-                  Data Insights
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#ai-automation"
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
-                  AI Automation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#data-visualization"
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
-                  Data Visualization
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services#marketing-optimization"
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
-                  Marketing Optimization
-                </Link>
-              </li>
+          <div className="lg:col-span-3">
+            <h3 className="mono-label text-brass">Services</h3>
+            <ul className="mt-6 space-y-3">
+              {SERVICE_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="filament inline-block text-[15px] text-ash transition-colors hover:text-bone"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-orange-custom">Contact</h3>
-            <div className="space-y-4 text-base">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-surfe-white/20 rounded-lg flex items-center justify-center">
-                  <Mail className="h-4 w-4 text-surfe-white" />
-                </div>
-                <a
-                  href={`mailto:${SITE_CONFIG.email}`}
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
+          {/* Contact */}
+          <div className="lg:col-span-2">
+            <h3 className="mono-label text-brass">Contact</h3>
+            <ul className="mt-6 space-y-3 text-[15px] text-ash">
+              <li>
+                <a href={`mailto:${SITE_CONFIG.email}`} className="transition-colors hover:text-bone">
                   {SITE_CONFIG.email}
                 </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-surfe-white/20 rounded-lg flex items-center justify-center">
-                  <Phone className="h-4 w-4 text-surfe-white" />
-                </div>
-                <a
-                  href={`tel:${SITE_CONFIG.phone}`}
-                  className="text-surfe-white/80 hover:text-surfe-white transition-colors font-medium"
-                >
+              </li>
+              <li>
+                <a href={`tel:${SITE_CONFIG.phone}`} className="transition-colors hover:text-bone">
                   {SITE_CONFIG.phone}
                 </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-surfe-white/20 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-4 w-4 text-surfe-white" />
-                </div>
-                <span className="text-surfe-white/80 font-medium">{SITE_CONFIG.address}</span>
-              </div>
-            </div>
+              </li>
+              <li className="leading-relaxed">{SITE_CONFIG.address}</li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-surfe-white/20 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-surfe-white/60 text-sm">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-line-dark pt-8 sm:flex-row sm:items-center">
+          <p className="mono-label text-ash">
             © {currentYear} {SITE_CONFIG.name}. All rights reserved.
           </p>
-          <div className="flex space-x-8 mt-4 sm:mt-0">
-            <Link
-              href="/privacy"
-              className="text-surfe-white/60 hover:text-surfe-white transition-colors text-sm font-medium"
-            >
+          <div className="flex gap-8">
+            <Link href="/privacy" className="mono-label text-ash transition-colors hover:text-bone">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="text-surfe-white/60 hover:text-surfe-white transition-colors text-sm font-medium"
-            >
+            <Link href="/terms" className="mono-label text-ash transition-colors hover:text-bone">
               Terms of Service
             </Link>
           </div>

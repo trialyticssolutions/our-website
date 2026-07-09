@@ -16,20 +16,7 @@ export function FloatingWidgets() {
         {/* WhatsApp Widget */}
         <Button
           onClick={handleWhatsAppClick}
-          className="w-14 h-14 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 whatsapp-button"
-          style={{
-            background: '#25D366',
-            borderColor: '#25D366',
-            backgroundColor: '#25D366'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#128C7E'
-            e.currentTarget.style.backgroundColor = '#128C7E'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = '#25D366'
-            e.currentTarget.style.backgroundColor = '#25D366'
-          }}
+          className="h-14 w-14 rounded-full bg-[#25D366] text-white shadow-lg transition-[background-color,box-shadow,transform] duration-micro ease-mech hover:-translate-y-0.5 hover:bg-[#128C7E] hover:shadow-xl"
           aria-label="Contact us on WhatsApp"
           title="Contact us on WhatsApp"
         >

@@ -200,6 +200,15 @@ Techniques in place — preserve them when editing:
 7. Lenis fights programmatic `window.scrollTo` in some flows; it's disabled under
    reduced motion. For test automation, scroll then wait ~500ms.
 8. shadcn Sheet needs an sr-only `SheetTitle` (Radix a11y) — already in navigation.
+9. **`public/` must stay committed.** The `.gitignore` originally had a bare
+   `public` rule (a Gatsby leftover, where public/ is build output). In this
+   Next.js app public/ is source — it holds the self-hosted woff2 fonts imported
+   by `app/layout.tsx`. That rule caused Vercel to fail with `Module not found:
+   ../public/fonts/*.woff2`. Fixed; don't re-add `public` to .gitignore.
+10. **Vercel**: Root Directory = `siteTesting2` (the app lives in that subfolder;
+    repo root only has README + reference material). If a build "completes" in
+    ~300ms with "no files were prepared," the Root Directory setting is blank —
+    set it back to `siteTesting2`.
 
 ## 10. Full history
 

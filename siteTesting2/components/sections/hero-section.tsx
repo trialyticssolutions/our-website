@@ -1,94 +1,123 @@
+'use client'
+
+import { CSSProperties, useRef } from 'react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowRight, BarChart3, Users, TrendingUp, CheckCircle, Sparkles, Shield } from 'lucide-react'
-import { HERO_STATS } from '@/data/constants'
+import dynamic from 'next/dynamic'
+import { motion, useInView, useScroll, useTransform } from 'motion/react'
+import { MECH } from '@/lib/motion'
+import { ArrowRight } from 'lucide-react'
+import { useCan3D } from '@/components/three/use-can-3d'
+import { useIdle } from '@/components/three/use-lazy-mount'
+
+const DataLattice = dynamic(() => import('@/components/three/data-lattice'), {
+  ssr: false,
+})
+
+const TRUST_BADGES = ['ISO 27001 Certified', 'GDPR Compliant', '50+ Projects Delivered']
+
+const delay = (ms: number) => ({ '--rise-delay': `${ms}ms` }) as CSSProperties
+
+/* Static lattice for reduced-motion / low-power devices */
+function StaticLattice() {
+  return (
+    <svg viewBox="0 0 400 400" className="h-full w-full opacity-60" aria-hidden="true">
+      <g stroke="#3a322a" strokeWidth="1" fill="none">
+        <path d="M80 220 L160 120 L260 160 L330 90 M160 120 L210 250 L260 160 M210 250 L110 300 L80 220 M260 160 L320 260 L210 250 M320 260 L110 300" />
+      </g>
+      <g fill="#6b6259">
+        <circle cx="80" cy="220" r="3" /><circle cx="260" cy="160" r="3" />
+        <circle cx="210" cy="250" r="3" /><circle cx="110" cy="300" r="3" />
+        <circle cx="330" cy="90" r="3" />
+      </g>
+      <g fill="#D89E3A">
+        <circle cx="160" cy="120" r="5" /><circle cx="320" cy="260" r="5" />
+      </g>
+    </svg>
+  )
+}
 
 export function HeroSection() {
-  return (
-    <section className="relative flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden section-spacing">
-      {/* 3D Background - Full Effect */}
-      <div className="nugget-hero-bg">
-        <div className="nugget-wireframe-grid"></div>
-        <div className="nugget-wireframe-sphere"></div>
-        <div className="nugget-wireframe-sphere-small"></div>
-        <div className="nugget-geometric-shapes"></div>
-        <div className="nugget-geometric-triangle"></div>
-        <div className="nugget-glow-orb"></div>
-        <div className="nugget-particles">
-          <div className="nugget-particle"></div>
-          <div className="nugget-particle"></div>
-          <div className="nugget-particle"></div>
-        </div>
-      </div>
-      
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-300/20 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-300/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-300/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-      </div>
-      
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 text-spacing">
-          {/* Main headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-surfe-primary element-spacing-sm leading-tight opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            Unlock Your Data's
-            <span className="block text-orange-custom">
-              Full Potential
-            </span>
-          </h1>
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef, { margin: '200px 0px' })
+  const use3d = useCan3D()
+  // Defer the three.js chunk until the main thread is idle — keeps the
+  // hero text's LCP and TBT off the canvas's critical path
+  const idle = useIdle(3500)
 
-          {/* Subheadline */}
-          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
-            Transforming raw data into actionable insights and automated solutions for scalable growth. 
-            From database setup to AI automation, we've got you covered.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+  const canvasOpacity = useTransform(scrollYProgress, [0, 0.75, 1], [1, 0.5, 0])
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden bg-char text-bone"
+    >
+      {/* 3D data lattice — assembles on load, rotates with scroll */}
+      <motion.div
+        className="pointer-events-none absolute inset-y-0 right-0 w-full opacity-30 md:w-[62%] md:opacity-100"
+        style={{ opacity: canvasOpacity }}
+        aria-hidden="true"
+      >
+        {use3d === true && idle && <DataLattice progress={scrollYProgress} active={inView} />}
+        {use3d === false && <StaticLattice />}
+      </motion.div>
+
+      <div className="container relative z-10 mx-auto px-6 pb-20 pt-10 md:pt-12 lg:px-8">
+        {/* CSS-driven entrance: paints before hydration, LCP-safe */}
+        <div className="max-w-3xl">
+          <p className="anim-rise mono-label text-brass">
+            AcubeInsights — Data Solutions
           </p>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.6s', animationFillMode: 'forwards' }}>
-            <Button 
-              className="btn-primary btn-lg text-lg"
-              asChild
-            >
-              <Link href="/services">
+          {/* H1 stays static: text animated from clip/opacity-0 is excluded
+              from LCP candidates — the headline must paint at first render */}
+          <h1 className="mt-7 font-display text-[clamp(2.9rem,7.5vw,5.6rem)] font-semibold leading-[0.98] tracking-tight">
+            <span className="block">Unlock Your Data&apos;s</span>
+            <span className="block text-brass">Full Potential</span>
+          </h1>
+
+          <p className="anim-rise mt-7 max-w-xl text-lg leading-relaxed text-bone/75" style={delay(320)}>
+            Transforming raw data into actionable insights and automated solutions for
+            scalable growth. From database setup to AI automation, we&apos;ve got you covered.
+          </p>
+
+          <div className="anim-rise mt-10 flex flex-col gap-4 sm:flex-row" style={delay(420)}>
+            <Link href="/services" className="btn-brass">
+              <span className="btn-label">
                 Explore Services
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Link>
-            </Button>
-            <Button 
-              className="btn-light btn-lg text-lg"
-              asChild
-            >
-              <Link href="/contact">
-                Get Free Consultation
-              </Link>
-            </Button>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </Link>
+            <Link href="/contact" className="btn-outline-bone">
+              <span className="btn-label">Get Free Consultation</span>
+            </Link>
           </div>
 
-          {/* Trust indicators */}
-          <div className="flex flex-wrap justify-center items-center gap-8 element-spacing-md opacity-0 animate-fade-in-up" style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}>
-            <div className="flex items-center space-x-2 text-orange-custom">
-              <CheckCircle className="h-5 w-5 text-green-500" />
-              <span className="text-sm font-medium">ISO 27001 Certified</span>
-            </div>
-            <div className="flex items-center space-x-2 text-orange-custom">
-              <Shield className="h-5 w-5 text-blue-500" />
-              <span className="text-sm font-medium">GDPR Compliant</span>
-            </div>
-            <div className="flex items-center space-x-2 text-orange-custom">
-              <Users className="h-5 w-5 text-purple-500" />
-              <span className="text-sm font-medium">50+ Projects Delivered</span>
-            </div>
-          </div>
+          <ul
+            className="anim-rise mono-label mt-16 flex flex-wrap items-center gap-x-6 gap-y-3 text-ash"
+            style={delay(520)}
+          >
+            {TRUST_BADGES.map((badge, i) => (
+              <li key={badge} className="flex items-center gap-6">
+                {i > 0 && <span className="h-1 w-1 bg-brass" aria-hidden="true" />}
+                {badge}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-surfe-primary rounded-full flex justify-center bg-surfe-white/50 backdrop-blur-sm">
-          <div className="w-1 h-3 bg-surfe-primary rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+      {/* Filament base line */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-px w-full origin-left bg-line-dark"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.0, delay: 0.6, ease: MECH }}
+        aria-hidden="true"
+      />
     </section>
   )
 }

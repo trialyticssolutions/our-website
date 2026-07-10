@@ -1,82 +1,182 @@
-"use client"
+'use client'
 
-import { useState } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react'
-import { Star, CheckCircle, ArrowRight } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { TESTIMONIALS } from '@/data/constants'
+import dynamic from 'next/dynamic'
+import { animate, motion, useInView } from 'motion/react'
+import { MECH } from '@/lib/motion'
+import { ArrowUpRight } from 'lucide-react'
+import { TESTIMONIALS, TRUST_INDICATORS } from '@/data/constants'
+import { useCan3D } from '@/components/three/use-can-3d'
+import { useLatched } from '@/components/three/use-lazy-mount'
+
+const LatticeCanvas = dynamic(() => import('@/components/three/data-lattice'), {
+  ssr: false,
+})
+
+/* Hard numbers pulled verbatim from the existing quotes — not new copy */
+const STAT_CALLOUTS: Record<
+  string,
+  { from: number; to: number; format: (v: number) => string; label: string }
+> = {
+  'testimonial-1': {
+    from: 9,
+    to: 4,
+    format: (v) => `9 → ${Math.round(v)}`,
+    label: 'Days to month-end close',
+  },
+  'testimonial-2': {
+    from: 0,
+    to: 32,
+    format: (v) => `+${Math.round(v)}%`,
+    label: 'Blended ROAS improvement',
+  },
+  'testimonial-3': {
+    from: 0,
+    to: 55,
+    format: (v) => `−${Math.round(v)}%`,
+    label: 'Ticket resolution time',
+  },
+}
+
+function StatValue({ from, to, format }: { from: number; to: number; format: (v: number) => string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-15% 0px' })
+
+  useEffect(() => {
+    if (!inView || !ref.current) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) {
+      ref.current.textContent = format(to)
+      return
+    }
+    const controls = animate(from, to, {
+      duration: 1.6,
+      ease: MECH,
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = format(v)
+      },
+    })
+    return () => controls.stop()
+  }, [inView, from, to, format])
+
+  return <span ref={ref}>{format(from)}</span>
+}
+
+const reveal = {
+  hidden: { opacity: 0, y: 26 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: MECH },
+  },
+}
+
+/* Infinite marquee of real client companies, typographic wordmarks.
+   Pauses via IntersectionObserver while off-screen — no idle compositor work. */
+function ClientMarquee() {
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const marqueeInView = useInView(wrapRef)
+  const items = [...TRUST_INDICATORS, ...TRUST_INDICATORS]
+  return (
+    <div
+      ref={wrapRef}
+      className="marquee mt-14 overflow-hidden border-y border-line-dark py-5 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+      aria-label="Companies we have worked with"
+    >
+      <ul className="marquee-track" data-paused={!marqueeInView}>
+        {items.map((client, i) => (
+          <li
+            key={`${client.name}-${i}`}
+            aria-hidden={i >= TRUST_INDICATORS.length}
+            className="flex shrink-0 items-center gap-12 pr-12 font-mono text-[15px] uppercase tracking-[0.2em] text-ash"
+          >
+            <span>{client.name}</span>
+            <span className="h-1.5 w-1.5 shrink-0 bg-brass" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export function TestimonialsSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef, { margin: '200px 0px' })
+  const can3d = useCan3D()
+  // Mount the three.js chunk only once the section nears the viewport
+  const mountWave = useLatched(inView)
+  const featured = TESTIMONIALS.filter((t) => t.featured).slice(0, 3)
+
   return (
-    <section className="section-spacing bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-spacing">
-          <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold element-spacing-sm">
-            <Star className="h-4 w-4 mr-2" />
-            Client Success Stories
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-surfe-primary element-spacing-sm">
-            What Our
-            <span className="block text-surfe-primary">Clients Say</span>
+    <section ref={sectionRef} className="relative overflow-hidden bg-char py-24 text-bone md:py-32">
+      {/* A slow data stream flowing behind the quotes */}
+      {can3d && mountWave && (
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[75%] opacity-40" aria-hidden="true">
+          <LatticeCanvas
+            variant="wave"
+            active={inView}
+            camera={{ position: [0, 1.2, 8.8], fov: 40 }}
+          />
+        </div>
+      )}
+
+      <div className="container relative z-10 mx-auto px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="mono-label text-brass">Client Success Stories</p>
+          <h2 className="mt-5 font-display text-[clamp(2.1rem,4.5vw,3.6rem)] font-semibold leading-[1.02] tracking-tight">
+            What Our Clients Say
           </h2>
-          <p className="text-xl text-surfe-text-secondary max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it - hear from the businesses we've helped transform
+          <p className="mt-5 text-base leading-relaxed text-bone/65">
+            Don&apos;t just take our word for it - hear from the businesses we&apos;ve
+            helped transform
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto element-spacing-lg" style={{marginTop: '4rem'}}>
-          {TESTIMONIALS.filter(testimonial => testimonial.featured).slice(0, 3).map((testimonial, index) => {
-            const colors = [
-              'from-blue-500 to-cyan-500',
-              'from-purple-500 to-pink-500', 
-              'from-orange-500 to-red-500'
-            ];
-            const avatar = testimonial.name.split(' ').map(n => n[0]).join('');
+        <ClientMarquee />
+
+        <div className="mt-4">
+          {featured.map((t) => {
+            const stat = STAT_CALLOUTS[t.id]
             return (
-            <div key={testimonial.id} className="group card-surfe p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="flex items-center mb-6">
-                <div className={`w-12 h-12 bg-gradient-to-r ${colors[index]} rounded-xl flex items-center justify-center text-white font-semibold text-lg mr-4`}>
-                  {avatar}
+              <motion.figure
+                key={t.id}
+                variants={reveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-80px 0px' }}
+                className="grid gap-8 border-b border-line-dark py-14 md:grid-cols-12 md:gap-12"
+              >
+                {stat && (
+                  <div className="md:col-span-4">
+                    <div className="font-display text-[clamp(3rem,6vw,4.8rem)] font-semibold leading-none tracking-tight text-brass">
+                      <StatValue from={stat.from} to={stat.to} format={stat.format} />
+                    </div>
+                    <div className="mono-label mt-4 text-ash">{stat.label}</div>
+                  </div>
+                )}
+                <div className={stat ? 'md:col-span-8' : 'md:col-span-12'}>
+                  <blockquote className="text-xl leading-relaxed text-bone/90 md:text-2xl md:leading-relaxed">
+                    &ldquo;{t.content}&rdquo;
+                  </blockquote>
+                  <figcaption className="mono-label mt-7 text-ash">
+                    <span className="text-bone">{t.name}</span>
+                    <span aria-hidden="true"> — </span>
+                    {t.position}, {t.company}
+                  </figcaption>
                 </div>
-                <div>
-                  <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">{testimonial.position} at {testimonial.company}</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center mb-4">
-                {Array.from({ length: Math.floor(testimonial.rating) }).map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              
-              <p className="text-gray-300 leading-relaxed mb-6">
-                "{testimonial.content}"
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <div className="text-sm text-gray-400">
-                  Verified Client
-                </div>
-                <CheckCircle className="h-5 w-5 text-green-500" />
-              </div>
-            </div>
+              </motion.figure>
             )
           })}
         </div>
 
-        <div className="text-center element-spacing-md">
-          <Button 
-            className="btn-secondary btn-lg"
-            asChild
-          >
-            <Link href="/testimonials">
+        <div className="mt-14">
+          <Link href="/testimonials" className="btn-outline-bone">
+            <span className="btn-label">
               View All Testimonials
-              <ArrowRight className="ml-3 h-5 w-5" />
-            </Link>
-          </Button>
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </span>
+          </Link>
         </div>
       </div>
     </section>

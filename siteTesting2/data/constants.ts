@@ -1,14 +1,14 @@
 import { Service, ProjectCase, Testimonial, TeamMember, SiteConfig } from '@/types'
 
 export const SITE_CONFIG: SiteConfig = {
-  name: "Data Consulting Agency",
+  name: "AcubeInsights",
   description: "Transforming raw data into actionable insights and automated solutions for scalable growth",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://acubeinsights.com",
   email: process.env.CONTACT_EMAIL || "connect@acubeinsights.com",
   phone: "+91-8112217234",
   address: "363 Sector 57, Gurugram, Haryana, India 122003",
   social: {
-    linkedin: "https://linkedin.com/company/youragency",
+    linkedin: "https://www.linkedin.com/company/acubeinsights-inc",
     twitter: "https://twitter.com/youragency",
     facebook: "https://facebook.com/youragency",
     instagram: "https://instagram.com/youragency"
@@ -499,6 +499,18 @@ export const TEAM_MEMBERS: TeamMember[] = [
   }
 ]
 
+/* Directory-style codes for the service index (not sequential markers) */
+export const SERVICE_CODES: Record<string, string> = {
+  'database-consultancy': 'DB',
+  'data-insights': 'DI',
+  'ai-automation': 'AI',
+  'data-visualization': 'DV',
+  'website-setup': 'WS',
+  'marketing-optimization': 'MO',
+  'zoho-setup': 'ZO',
+  'ga4-setup': 'GA',
+}
+
 export const NAVIGATION_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
@@ -518,17 +530,19 @@ export const CONTACT_SUBJECTS = [
 ]
 
 export const HERO_STATS = [
-  { value: "100+", label: "Successful Projects" },
-  { value: "50+", label: "Happy Clients" },
+  { value: "50+", label: "Projects Delivered" },
   { value: "5+", label: "Years Experience" },
   { value: "98%", label: "Client Satisfaction" }
 ]
 
+// Real client companies (from testimonials) — rendered as typographic
+// wordmarks until official logo assets are collected.
 export const TRUST_INDICATORS = [
-  { name: "TechCorp", logo: "/images/clients/techcorp.png" },
-  { name: "AcubeInsights", logo: "/images/clients/dataflow.png" },
-  { name: "CloudSystems", logo: "/images/clients/cloudsystems.png" },
-  { name: "InnovateLabs", logo: "/images/clients/innovatelabs.png" },
-  { name: "ScaleUp", logo: "/images/clients/scaleup.png" },
-  { name: "GrowthCo", logo: "/images/clients/growthco.png" }
+  { name: "USA India CFO", logo: "" },
+  { name: "Mamaearth", logo: "" },
+  { name: "Wishlink", logo: "" },
+  { name: "Park+", logo: "" },
+  { name: "Fleetx", logo: "" },
+  { name: "Postalytics", logo: "" },
+  { name: "Pragati Plastics", logo: "" }
 ]

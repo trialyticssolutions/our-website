@@ -1,9 +1,41 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
+import { JetBrains_Mono } from 'next/font/google'
 import '@/styles/globals.css'
 import { SITE_CONFIG } from '@/data/constants'
 
-const inter = Inter({ subsets: ['latin'] })
+const displayFont = localFont({
+  src: [
+    { path: '../public/fonts/ClashDisplay-Medium.woff2', weight: '500', style: 'normal' },
+    { path: '../public/fonts/ClashDisplay-Semibold.woff2', weight: '600', style: 'normal' },
+  ],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const sansFont = localFont({
+  src: [
+    { path: '../public/fonts/GeneralSans-Regular.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/GeneralSans-Medium.woff2', weight: '500', style: 'normal' },
+    { path: '../public/fonts/GeneralSans-Semibold.woff2', weight: '600', style: 'normal' },
+  ],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+  display: 'swap',
+})
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#161210',
+}
 
 export const metadata: Metadata = {
   title: {
@@ -41,29 +73,11 @@ export const metadata: Metadata = {
     title: `${SITE_CONFIG.name} - Unlock Your Data's Full Potential`,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
-    images: [
-      {
-        url: `${SITE_CONFIG.url}/images/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: 'ACube Insights - Data Consulting & Analytics',
-        type: 'image/png',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_CONFIG.name} - Unlock Your Data's Full Potential`,
     description: SITE_CONFIG.description,
-    creator: '@youragency',
-    images: [`${SITE_CONFIG.url}/images/og-image.png`],
-  },
-  other: {
-    'og:image': `${SITE_CONFIG.url}/images/og-image.png`,
-    'og:image:width': '1200',
-    'og:image:height': '630',
-    'og:image:type': 'image/png',
-    'og:site_name': SITE_CONFIG.name,
   },
   robots: {
     index: true,
@@ -76,9 +90,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
 }
 
 export default function RootLayout({
@@ -89,19 +100,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preload critical resources */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
-        {/* Additional meta tags for performance */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#0ea5e9" />
-        
-        {/* Schema.org markup */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -111,7 +109,6 @@ export default function RootLayout({
               name: SITE_CONFIG.name,
               description: SITE_CONFIG.description,
               url: SITE_CONFIG.url,
-              logo: `${SITE_CONFIG.url}/logo.png`,
               contactPoint: {
                 '@type': 'ContactPoint',
                 telephone: SITE_CONFIG.phone,
@@ -120,21 +117,18 @@ export default function RootLayout({
               },
               address: {
                 '@type': 'PostalAddress',
-                addressLocality: 'City',
-                addressRegion: 'State',
-                postalCode: '12345',
-                streetAddress: SITE_CONFIG.address,
+                addressLocality: 'Gurugram',
+                addressRegion: 'Haryana',
+                postalCode: '122003',
+                addressCountry: 'IN',
+                streetAddress: '363 Sector 57',
               },
-              sameAs: [
-                SITE_CONFIG.social.linkedin,
-                SITE_CONFIG.social.twitter,
-                SITE_CONFIG.social.facebook,
-              ].filter(Boolean),
+              sameAs: [SITE_CONFIG.social.linkedin].filter(Boolean),
             }),
           }}
         />
       </head>
-      <body className={`${inter.className} dark`}>
+      <body className={`${sansFont.variable} ${displayFont.variable} ${monoFont.variable}`}>
         {children}
       </body>
     </html>

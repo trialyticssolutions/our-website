@@ -5,7 +5,6 @@ module.exports = {
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
   ],
   theme: {
     container: {
@@ -50,114 +49,51 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // SURFE Exact Color Palette from Image
-        surfe: {
-          primary: '#073742', /* Dark teal/blue-green - logo, nav, buttons */
-          background: '#F0F8FA', /* Very light pale blue/off-white background */
-          'text-primary': '#073742', /* Primary text color */
-          'text-secondary': '#6B7280', /* Medium-dark gray for sub-headings */
-          'text-light': '#9CA3AF', /* Light gray for footer text */
-          'button-light': '#E0F2F7', /* Light blue for secondary buttons */
-          white: '#FFFFFF', /* Pure white */
-          50: '#F9FAFB',
-          100: '#F3F4F6',
-          200: '#E5E7EB',
-          300: '#D1D5DB',
-          400: '#9CA3AF',
-          500: '#6B7280',
-          600: '#4B5563',
-          700: '#374151',
-          800: '#1F2937',
-          900: '#111827',
+
+        // "Tungsten Ledger" palette
+        char: '#161210',
+        umber: '#221B16',
+        bone: {
+          DEFAULT: '#F3EEE6',
+          2: '#EAE2D4',
         },
+        brass: {
+          DEFAULT: '#D89E3A',
+          deep: '#7E5A1D', // 5.4:1 on bone, 4.85:1 on bone-2 (AA small text)
+        },
+        ash: {
+          DEFAULT: '#97918A',
+          deep: '#6B655D', // AA-contrast muted for light grounds
+        },
+        'ink-warm': '#2A241D',
+        'line-dark': '#2B241E',
+        'line-light': '#DDD5C7',
+
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 1px)",
+        sm: "var(--radius)",
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-        heading: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
-        display: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
-      fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
-        '2xl': ['1.5rem', { lineHeight: '2rem' }],
-        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-        '5xl': ['3rem', { lineHeight: '1' }],
-        '6xl': ['3.75rem', { lineHeight: '1' }],
-        '7xl': ['4.5rem', { lineHeight: '1' }],
-        '8xl': ['6rem', { lineHeight: '1' }],
-        '9xl': ['8rem', { lineHeight: '1' }],
+      transitionTimingFunction: {
+        // "Workshop" easing — quick approach, mechanical settle (entrances/standard)
+        mech: 'cubic-bezier(0.22, 1, 0.36, 1)',
+        // Exits accelerate out
+        exit: 'cubic-bezier(0.4, 0, 1, 1)',
       },
-      fontWeight: {
-        thin: '100',
-        extralight: '200',
-        light: '300',
-        normal: '400',
-        medium: '500',
-        semibold: '600',
-        bold: '700',
-        extrabold: '800',
-        black: '900',
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
-        "fade-in": {
-          from: { opacity: 0, transform: "translateY(10px)" },
-          to: { opacity: 1, transform: "translateY(0)" },
-        },
-        "slide-in": {
-          from: { transform: "translateX(-100%)" },
-          to: { transform: "translateX(0)" },
-        },
-        "gradient": {
-          "0%, 100%": {
-            "background-size": "200% 200%",
-            "background-position": "left center"
-          },
-          "50%": {
-            "background-size": "200% 200%",
-            "background-position": "right center"
-          },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out",
-        "slide-in": "slide-in 0.3s ease-out",
-        "gradient": "gradient 3s ease infinite",
-        "float": "float 3s ease-in-out infinite",
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'surfe-gradient': 'linear-gradient(135deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
-        'surfe-gradient-horizontal': 'linear-gradient(90deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
-        'surfe-gradient-vertical': 'linear-gradient(180deg, #073742 0%, #E0F2F7 50%, #073742 100%)',
-      },
-      boxShadow: {
-        'surfe': '0 10px 25px -3px rgba(7, 55, 66, 0.1), 0 4px 6px -2px rgba(7, 55, 66, 0.05)',
-        'surfe-lg': '0 20px 25px -5px rgba(7, 55, 66, 0.1), 0 10px 10px -5px rgba(7, 55, 66, 0.04)',
-        'surfe-xl': '0 25px 50px -12px rgba(7, 55, 66, 0.25)',
+      transitionDuration: {
+        micro: '150ms',
+        standard: '300ms',
+        // Between standard and large — the services-row inversion wipe.
+        // NOTE: arbitrary duration-[...] classes are ambiguous with
+        // tailwindcss-animate's animation-duration utility; use named tokens.
+        450: '450ms',
+        large: '600ms',
       },
     },
   },
@@ -165,5 +101,6 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/aspect-ratio"),
+    require("tailwindcss-animate"),
   ],
-} 
+}

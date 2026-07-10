@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AcubeInsights — Phase 1 Design Directions · Round 2</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=general-sans@400,500,600&f[]=sentient@400,500,700&f[]=clash-display@500,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #111113; color: #eceae5; font-family: 'General Sans', sans-serif; }
+
+  /* ---------- shared scaffolding ---------- */
+  .meta-bar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 32px; background: #111113; border-bottom: 1px solid #26262a;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em;
+  }
+  .meta-bar a { color: #9a9aa2; text-decoration: none; margin-left: 24px; }
+  .meta-bar a:hover { color: #fff; }
+  .intro { padding: 72px 32px 56px; max-width: 880px; }
+  .intro h1 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; }
+  .intro p { margin-top: 20px; color: #9a9aa2; font-size: 17px; line-height: 1.6; max-width: 660px; }
+
+  .direction { padding: 88px 32px 96px; }
+  .d-inner { max-width: 1120px; margin: 0 auto; }
+  .d-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .d-name { font-size: clamp(28px, 3.5vw, 44px); margin-top: 12px; }
+  .d-feel { margin-top: 10px; font-size: 16px; opacity: 0.78; max-width: 580px; line-height: 1.55; }
+
+  .swatches { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+  .swatch { width: 148px; }
+  .swatch .chip { height: 84px; border-radius: 2px; }
+  .swatch .sw-name { font-size: 13px; margin-top: 8px; font-weight: 500; }
+  .swatch .sw-hex { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.6; margin-top: 2px; }
+
+  .specimen { margin-top: 64px; }
+  .spec-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin-bottom: 20px; }
+  .hero-h { font-size: clamp(40px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.015em; max-width: 780px; }
+  .hero-sub { margin-top: 24px; font-size: 18px; line-height: 1.6; max-width: 560px; opacity: 0.8; }
+
+  .btn-row { display: flex; gap: 16px; margin-top: 36px; flex-wrap: wrap; }
+  .btn { font-family: inherit; font-size: 15px; font-weight: 500; padding: 15px 30px; cursor: pointer; border: none;
+         position: relative; overflow: hidden; transition: transform 0.22s cubic-bezier(0.22,1,0.36,1); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn .sweep { position: absolute; inset: 0; transform: translateX(-101%); transition: transform 0.32s cubic-bezier(0.22,1,0.36,1); z-index: 0; }
+  .btn:hover .sweep { transform: translateX(0); }
+  .btn span.lbl { position: relative; z-index: 1; transition: color 0.3s; }
+
+  .metrics { display: flex; gap: 56px; margin-top: 64px; flex-wrap: wrap; }
+  .metric .m-val { font-size: clamp(34px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; }
+  .metric .m-lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 8px; opacity: 0.6; }
+
+  .svc-sample { margin-top: 64px; }
+  .svc-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 24px; align-items: baseline;
+             padding: 22px 0; cursor: default; transition: padding-left 0.28s cubic-bezier(0.22,1,0.36,1); }
+  .svc-row:hover { padding-left: 14px; }
+  .svc-idx { font-family: 'JetBrains Mono', monospace; font-size: 12px; opacity: 0.5; }
+  .svc-name { font-size: 22px; font-weight: 500; }
+  .svc-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; opacity: 0.55; }
+
+  .motion-notes { margin-top: 72px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+  .mn h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.55; margin-bottom: 12px; }
+  .mn p { font-size: 15px; line-height: 1.65; opacity: 0.85; }
+
+  /* ================= DIRECTION D — EVERGREEN ================= */
+  .dir-d { background: #0E2E25; color: #F1ECDF; }
+  .dir-d .d-label { color: #C2A264; }
+  .dir-d .d-name, .dir-d .hero-h { font-family: 'Sentient', serif; font-weight: 500; }
+  .dir-d .hero-h em { font-style: italic; color: #C2A264; }
+  .dir-d .btn-d1 { background: #C2A264; color: #0E2E25; font-weight: 600; }
+  .dir-d .btn-d1 .sweep { background: #F1ECDF; }
+  .dir-d .btn-d2 { background: transparent; color: #F1ECDF; box-shadow: inset 0 0 0 1px #33584a; }
+  .dir-d .btn-d2:hover { box-shadow: inset 0 0 0 1px #C2A264; }
+  .dir-d .btn { transition-duration: 0.38s; }
+  .dir-d .btn .sweep { transition-duration: 0.5s; }
+  .dir-d .metric .m-val { font-family: 'Sentient', serif; font-weight: 500; }
+  .dir-d .metric .m-lbl { color: #C2A264; opacity: 0.9; font-family: 'Geist Mono', monospace; }
+  .dir-d .svc-name { font-family: 'Sentient', serif; font-weight: 500; }
+  .dir-d .svc-row { border-top: 1px solid #1d4437; }
+  .dir-d .svc-row:last-child { border-bottom: 1px solid #1d4437; }
+  .dir-d .svc-row:hover .svc-idx { color: #C2A264; opacity: 1; }
+  .dir-d .spec-eyebrow, .dir-d .svc-idx, .dir-d .svc-tag, .dir-d .mn h4 { font-family: 'Geist Mono', monospace; }
+
+  /* ================= DIRECTION E — ULTRAMARINE ================= */
+  .dir-e { background: #F4F2EC; color: #101015; }
+  .dir-e .d-label { color: #1B2FC4; }
+  .dir-e .d-name, .dir-e .hero-h, .dir-e .svc-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; }
+  .dir-e .hero-h em { font-style: normal; color: #1B2FC4; }
+  .dir-e .btn-e1 { background: #1B2FC4; color: #F4F2EC; }
+  .dir-e .btn-e1 .sweep { background: #101015; }
+  .dir-e .btn-e2 { background: transparent; color: #101015; box-shadow: inset 0 0 0 1px #101015; }
+  .dir-e .btn-e2:hover { color: #1B2FC4; box-shadow: inset 0 0 0 1px #1B2FC4; }
+  .dir-e .metric .m-val { font-family: 'Cabinet Grotesk', sans-serif; color: #1B2FC4; }
+  .dir-e .svc-row { border-top: 1px solid #DEDCD2; }
+  .dir-e .svc-row:last-child { border-bottom: 1px solid #DEDCD2; }
+  .dir-e .svc-row:hover { background: #ECEAE2; }
+  .dir-e .svc-row:hover .svc-idx { color: #1B2FC4; opacity: 1; }
+  .dir-e .swatch .chip { border: 1px solid #DEDCD2; }
+  .inversion-band { margin-top: 72px; background: #1B2FC4; color: #F4F2EC; padding: 56px 48px; }
+  .inversion-band .ib-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; }
+  .inversion-band h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 48px); line-height: 1.02; margin-top: 16px; max-width: 640px; }
+  .inversion-band p { margin-top: 16px; opacity: 0.8; font-size: 15px; max-width: 520px; line-height: 1.6; }
+
+  /* ================= DIRECTION F — TUNGSTEN ================= */
+  .dir-f { background: #161210; color: #F3EEE6; }
+  .dir-f .d-label { color: #D89E3A; }
+  .dir-f .d-name, .dir-f .hero-h, .dir-f .svc-name { font-family: 'Clash Display', sans-serif; font-weight: 600; }
+  .dir-f .hero-h em { font-style: normal; color: #D89E3A; }
+  .dir-f .btn-f1 { background: #D89E3A; color: #161210; font-weight: 600; }
+  .dir-f .btn-f1 .sweep { background: #F3EEE6; }
+  .dir-f .btn-f2 { background: transparent; color: #F3EEE6; box-shadow: inset 0 0 0 1px #4a4139; }
+  .dir-f .btn-f2:hover { box-shadow: inset 0 0 0 1px #D89E3A; }
+  .dir-f .metric .m-val { font-family: 'Clash Display', sans-serif; font-weight: 600; color: #D89E3A; }
+  .dir-f .svc-row { border-top: 1px solid #2b241e; }
+  .dir-f .svc-row:last-child { border-bottom: 1px solid #2b241e; }
+  .dir-f .svc-row:hover .svc-idx { color: #D89E3A; opacity: 1; }
+
+  .footer-note { padding: 64px 32px 96px; max-width: 880px; }
+  .footer-note p { color: #9a9aa2; line-height: 1.65; font-size: 15px; }
+  @media (max-width: 640px) {
+    .metrics { gap: 32px; }
+    .svc-row { grid-template-columns: 44px 1fr; }
+    .svc-tag { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="meta-bar">
+  <div>ACUBEINSIGHTS / PHASE 1 — ROUND 2</div>
+  <nav>
+    <a href="#dir-d">D — Evergreen</a>
+    <a href="#dir-e">E — Ultramarine</a>
+    <a href="#dir-f">F — Tungsten</a>
+  </nav>
+</div>
+
+<div class="intro">
+  <h1>Round 2 — three fresh grounds.</h1>
+  <p>Round 1 leaned on the standard studio-site hues (cool near-black, petrol, off-white + cobalt). These three break from that: a deep evergreen with brass, a flat electric ultramarine used as color-block, and a warm tungsten dark. None of these hue families appear in AI-template output, and none are common among data consultancies. Hover buttons and rows — motion character is live.</p>
+</div>
+
+<!-- ============ DIRECTION D ============ -->
+<section class="direction dir-d" id="dir-d">
+  <div class="d-inner">
+    <div class="d-label">Direction D</div>
+    <h2 class="d-name">Evergreen</h2>
+    <p class="d-feel">The private-bank palette, retooled for data. Deep evergreen ground, warm cream, and muted brass — heritage-expensive, calm, and deeply trustworthy. Green is almost unused in this industry, which makes it ownable.</p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#0E2E25"></div><div class="sw-name">Evergreen</div><div class="sw-hex">#0E2E25</div></div>
+      <div class="swatch"><div class="chip" style="background:#173B30"></div><div class="sw-name">Pine Surface</div><div class="sw-hex">#173B30</div></div>
+      <div class="swatch"><div class="chip" style="background:#F1ECDF"></div><div class="sw-name">Cream</div><div class="sw-hex">#F1ECDF</div></div>
+      <div class="swatch"><div class="chip" style="background:#C2A264"></div><div class="sw-name">Muted Brass</div><div class="sw-hex">#C2A264</div></div>
+      <div class="swatch"><div class="chip" style="background:#9FB4A6"></div><div class="sw-name">Sage Mist</div><div class="sw-hex">#9FB4A6</div></div>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-eyebrow">Type — Sentient 500 / General Sans / Geist Mono</div>
+      <h3 class="hero-h">Unlock your data's <em>full potential</em></h3>
+      <p class="hero-sub">Transforming raw data into actionable insights and automated solutions for scalable growth. From database setup to AI automation, we've got you covered.</p>
+      <div class="btn-row">
+        <button class="btn btn-d1"><div class="sweep"></div><span class="lbl">Explore Services</span></button>
+        <button class="btn btn-d2"><span class="lbl">Get Free Consultation</span></button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m-val">9 → 4</div><div class="m-lbl">Days to month-end close</div></div>
+        <div class="metric"><div class="m-val">+32%</div><div class="m-lbl">Blended ROAS</div></div>
+        <div class="metric"><div class="m-val">−55%</div><div class="m-lbl">Ticket resolution time</div></div>
+      </div>
+    </div>
+
+    <div class="svc-sample">
+      <div class="spec-eyebrow">Service index treatment</div>
+      <div class="svc-row"><div class="svc-idx">01</div><div class="svc-name">Database Consultancy 0 to 1</div><div class="svc-tag">PostgreSQL / Snowflake / Airflow</div></div>
+      <div class="svc-row"><div class="svc-idx">03</div><div class="svc-name">Business Automation using AI</div><div class="svc-tag">TensorFlow / OpenAI API</div></div>
+      <div class="svc-row"><div class="svc-idx">08</div><div class="svc-name">GA4 Setup</div><div class="svc-tag">GA4 / GTM / BigQuery</div></div>
+    </div>
+
+    <div class="motion-notes">
+      <div class="mn"><h4>Motion personality — "Composed"</h4><p>Unhurried 500–700ms easings, generous stagger. Sections settle into place; brass hairlines draw in as dividers. Hovers are slow background sweeps — the site never rushes you, the way expensive things don't.</p></div>
+      <div class="mn"><h4>Scroll &amp; 3D</h4><p>A <strong>data topography</strong>: contour lines in brass wire forming a rising landscape — raw data as terrain being surveyed. It elevates and rotates gently with scroll, each service section illuminating a different ridge.</p></div>
+      <div class="mn"><h4>Signature element</h4><p><strong>Brass contours</strong> — the topographic line motif recurs as section dividers and behind metrics, giving the whole site the character of a beautifully drawn survey map.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIRECTION E ============ -->
+<section class="direction dir-e" id="dir-e">
+  <div class="d-inner">
+    <div class="d-label">Direction E</div>
+    <h2 class="d-name">Ultramarine</h2>
+    <p class="d-feel">One color, used with total conviction. Flat electric ultramarine — no gradients, ever — against warm chalk and ink. The page works as color-blocks: chalk sections that suddenly invert into full-bleed ultramarine moments. Bold, modern, impossible to mistake for a template.</p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#1B2FC4"></div><div class="sw-name">Ultramarine</div><div class="sw-hex">#1B2FC4</div></div>
+      <div class="swatch"><div class="chip" style="background:#F4F2EC"></div><div class="sw-name">Chalk</div><div class="sw-hex">#F4F2EC</div></div>
+      <div class="swatch"><div class="chip" style="background:#101015"></div><div class="sw-name">Ink</div><div class="sw-hex">#101015</div></div>
+      <div class="swatch"><div class="chip" style="background:#2B2D33"></div><div class="sw-name">Graphite</div><div class="sw-hex">#2B2D33</div></div>
+      <div class="swatch"><div class="chip" style="background:#DEDCD2"></div><div class="sw-name">Chalk Line</div><div class="sw-hex">#DEDCD2</div></div>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-eyebrow">Type — Cabinet Grotesk 800 / General Sans / JetBrains Mono</div>
+      <h3 class="hero-h">Unlock your data's <em>full potential</em></h3>
+      <p class="hero-sub">Transforming raw data into actionable insights and automated solutions for scalable growth. From database setup to AI automation, we've got you covered.</p>
+      <div class="btn-row">
+        <button class="btn btn-e1"><div class="sweep"></div><span class="lbl">Explore Services</span></button>
+        <button class="btn btn-e2"><span class="lbl">Get Free Consultation</span></button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m-val">9 → 4</div><div class="m-lbl">Days to month-end close</div></div>
+        <div class="metric"><div class="m-val">+32%</div><div class="m-lbl">Blended ROAS</div></div>
+        <div class="metric"><div class="m-val">−55%</div><div class="m-lbl">Ticket resolution time</div></div>
+      </div>
+    </div>
+
+    <div class="svc-sample">
+      <div class="spec-eyebrow">Service index treatment</div>
+      <div class="svc-row"><div class="svc-idx">DB—01</div><div class="svc-name">Database Consultancy 0 to 1</div><div class="svc-tag">PostgreSQL / Snowflake / Airflow</div></div>
+      <div class="svc-row"><div class="svc-idx">AI—03</div><div class="svc-name">Business Automation using AI</div><div class="svc-tag">TensorFlow / OpenAI API</div></div>
+      <div class="svc-row"><div class="svc-idx">GA—08</div><div class="svc-name">GA4 Setup</div><div class="svc-tag">GA4 / GTM / BigQuery</div></div>
+    </div>
+
+    <div class="inversion-band">
+      <div class="ib-eyebrow">The inversion — signature moment</div>
+      <h3>Ready to transform your data into your competitive advantage?</h3>
+      <p>Mid-scroll, the page inverts: chalk becomes ultramarine edge-to-edge, type flips to chalk, and the CTA lands inside the boldest moment on the site. This band is a live sample of that treatment.</p>
+    </div>
+
+    <div class="motion-notes">
+      <div class="mn"><h4>Motion personality — "Kinetic"</h4><p>Confident and architectural: 300–450ms with sharp ease-out. Headlines slide in as whole blocks, color-block sections wipe over each other on scroll. Hovers are ink sweeps and hard color flips — graphic, not glossy.</p></div>
+      <div class="mn"><h4>Scroll &amp; 3D</h4><p>A <strong>white ceramic-and-glass abstract form</strong> floating on the ultramarine hero block — matte, art-directed, single key light. It fractures into an ordered grid of cubes as you scroll into services (raw → structured), each service snapping a layer into alignment.</p></div>
+      <div class="mn"><h4>Signature element</h4><p><strong>The inversion</strong> — the full-bleed flip from chalk to ultramarine. Visitors remember the site as "the blue one," which is exactly the kind of recall a brand accent is for.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIRECTION F ============ -->
+<section class="direction dir-f" id="dir-f">
+  <div class="d-inner">
+    <div class="d-label">Direction F</div>
+    <h2 class="d-name">Tungsten</h2>
+    <p class="d-feel">A machine shop after hours: warm charcoal-brown dark (not the usual blue-black), bone white, and tungsten-filament amber. Precision with warmth — engineered, but human. The rarest dark-mode temperature on the web right now.</p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#161210"></div><div class="sw-name">Char</div><div class="sw-hex">#161210</div></div>
+      <div class="swatch"><div class="chip" style="background:#221B16"></div><div class="sw-name">Umber Surface</div><div class="sw-hex">#221B16</div></div>
+      <div class="swatch"><div class="chip" style="background:#F3EEE6"></div><div class="sw-name">Bone</div><div class="sw-hex">#F3EEE6</div></div>
+      <div class="swatch"><div class="chip" style="background:#D89E3A"></div><div class="sw-name">Tungsten Amber</div><div class="sw-hex">#D89E3A</div></div>
+      <div class="swatch"><div class="chip" style="background:#97918A"></div><div class="sw-name">Ash</div><div class="sw-hex">#97918A</div></div>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-eyebrow">Type — Clash Display 600 / General Sans / JetBrains Mono</div>
+      <h3 class="hero-h">Unlock your data's <em>full potential</em></h3>
+      <p class="hero-sub">Transforming raw data into actionable insights and automated solutions for scalable growth. From database setup to AI automation, we've got you covered.</p>
+      <div class="btn-row">
+        <button class="btn btn-f1"><div class="sweep"></div><span class="lbl">Explore Services</span></button>
+        <button class="btn btn-f2"><span class="lbl">Get Free Consultation</span></button>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m-val">9 → 4</div><div class="m-lbl">Days to month-end close</div></div>
+        <div class="metric"><div class="m-val">+32%</div><div class="m-lbl">Blended ROAS</div></div>
+        <div class="metric"><div class="m-val">−55%</div><div class="m-lbl">Ticket resolution time</div></div>
+      </div>
+    </div>
+
+    <div class="svc-sample">
+      <div class="spec-eyebrow">Service index treatment</div>
+      <div class="svc-row"><div class="svc-idx">DB/01</div><div class="svc-name">Database Consultancy 0 to 1</div><div class="svc-tag">PostgreSQL / Snowflake / Airflow</div></div>
+      <div class="svc-row"><div class="svc-idx">AI/03</div><div class="svc-name">Business Automation using AI</div><div class="svc-tag">TensorFlow / OpenAI API</div></div>
+      <div class="svc-row"><div class="svc-idx">GA/08</div><div class="svc-name">GA4 Setup</div><div class="svc-tag">GA4 / GTM / BigQuery</div></div>
+    </div>
+
+    <div class="motion-notes">
+      <div class="mn"><h4>Motion personality — "Workshop"</h4><p>Precise 300–420ms movements with a slight mechanical settle at the end, like a tool locking into its fixture. Amber indicator dots blink on as sections become active. Hovers are lifts with an amber edge-light catching the element.</p></div>
+      <div class="mn"><h4>Scroll &amp; 3D</h4><p>A <strong>machined metal assembly</strong> — an abstract precision part in dark steel with warm amber key lighting — that rotates and disassembles into its components as you scroll, each service section holding one component in focus, then reassembling at the CTA.</p></div>
+      <div class="mn"><h4>Signature element</h4><p><strong>The filament line</strong> — a thin amber thread that glows along section edges and under active nav items, like a heated wire. Warm light on dark metal becomes the brand's texture.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  <p>Pick one or remix across rounds — e.g. "Evergreen's palette with Ultramarine's kinetic color-blocks," or "Tungsten's warmth with the round-1 lattice concept." The pick becomes the token system for the Phase 2 homepage rebuild.</p>
+</div>
+
+</body>
+</html>

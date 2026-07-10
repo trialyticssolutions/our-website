@@ -1,57 +1,74 @@
+'use client'
+
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { motion } from 'motion/react'
+import { MECH } from '@/lib/motion'
+import { ArrowRight } from 'lucide-react'
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.25 } },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: MECH },
+  },
+}
 
 export function CtaSection() {
   return (
-    <section className="relative section-spacing bg-gradient-to-r from-surfe-primary to-surfe-700 overflow-hidden">
-      {/* 3D Background - Subtle Effect */}
-      <div className="nugget-hero-bg">
-        <div className="nugget-wireframe-grid"></div>
-        <div className="nugget-particles">
-          <div className="nugget-particle"></div>
-          <div className="nugget-particle"></div>
-        </div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="max-w-4xl mx-auto text-spacing">
-          <div className="inline-flex items-center px-4 py-2 bg-surfe-white/20 text-surfe-white rounded-full text-sm font-semibold element-spacing-sm">
-            <Sparkles className="h-4 w-4 mr-2" />
-            Ready to Transform Your Data?
-          </div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold text-surfe-white element-spacing-sm leading-tight">
-            Start Your Data
-            <span className="block text-orange-custom">Transformation Today</span>
-          </h2>
-          
-          <p className="text-xl text-surfe-white/90 element-spacing-lg max-w-3xl mx-auto">
-            Join hundreds of businesses that have already unlocked the full potential of their data. 
-            Get started with a free consultation and see the difference we can make.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center element-spacing-lg">
-            <Button
-                    className="btn-light btn-lg"
-                    asChild
-                  >
-              <Link href="/contact">
-                Get Started Free
-                <ArrowRight className="ml-3 h-6 w-6" />
+    <section className="overflow-hidden bg-char">
+      {/* The inversion: full-bleed brass band wipes up out of the char page */}
+      <motion.div
+        initial={{ clipPath: 'inset(100% 0 0 0)' }}
+        whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
+        viewport={{ once: true, margin: '-120px 0px' }}
+        transition={{ duration: 0.9, ease: MECH }}
+        className="bg-brass text-char"
+      >
+        <div className="container mx-auto px-6 py-24 md:py-32 lg:px-8">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-120px 0px' }}
+            className="max-w-3xl"
+          >
+            <motion.p variants={item} className="mono-label text-char/70">
+              Ready to Transform Your Data?
+            </motion.p>
+
+            <motion.h2
+              variants={item}
+              className="mt-6 font-display text-[clamp(2.3rem,5.5vw,4.2rem)] font-semibold leading-[1.0] tracking-tight"
+            >
+              Start Your Data Transformation Today
+            </motion.h2>
+
+            <motion.p variants={item} className="mt-6 max-w-2xl text-lg leading-relaxed text-char/80">
+              Join 50+ businesses that have already unlocked the full potential of their
+              data. Get started with a free consultation and see the difference we can
+              make.
+            </motion.p>
+
+            <motion.div variants={item} className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <Link href="/contact" className="btn-char-solid">
+                <span className="btn-label">
+                  Get Started Free
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
               </Link>
-            </Button>
-            <Button
-                    className="btn-secondary btn-lg"
-                    asChild
-                  >
-              <Link href="/services">
-                View Services
+              <Link href="/services" className="btn-outline-char">
+                <span className="btn-label">View Services</span>
               </Link>
-            </Button>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

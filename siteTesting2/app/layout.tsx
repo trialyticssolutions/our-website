@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { JetBrains_Mono } from 'next/font/google'
+import { GoogleTagManager } from '@next/third-parties/google'
 import '@/styles/globals.css'
 import { SITE_CONFIG } from '@/data/constants'
+import { GTMPageView } from '@/components/providers/gtm-page-view'
 
 const displayFont = localFont({
   src: [
@@ -128,7 +130,17 @@ export default function RootLayout({
           }}
         />
       </head>
+      <GoogleTagManager gtmId="GTM-M7CMS3K3" />
       <body className={`${sansFont.variable} ${displayFont.variable} ${monoFont.variable}`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M7CMS3K3"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        <GTMPageView />
         {children}
       </body>
     </html>
